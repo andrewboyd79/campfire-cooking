@@ -12,8 +12,12 @@
         {{ recipe.serves }}<br>
         {{ recipe.prep_time }}<br>
         {{ recipe.cook_time }}<br>
-        {{ recipe.ingredients }}<br>
-        {{ recipe.image_url }}><br>
+        {{ recipe.image_url }}<br>
+       
+        {% for ingredient in recipe.ingredients %}
+            {{ ingredient }}<br>
+        {% endfor %}
+        
         {% for steps in recipe.method %}
             {{ steps }}<br>
         {% endfor %}
