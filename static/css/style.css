@@ -1,4 +1,39 @@
+html{
+    font-size: 16px;
+}
+
 body {
     font-family: acumin-pro, sans-serif;
     font-weight: 400;
+}
+
+.container{
+    min-width: 95%;
+    margin-top: 65px;
+}
+
+.nav-wrapper{
+    padding: 0px 20px;
+}
+
+.brand-logo img{
+    max-height: 128px;
+    border-radius: 50%;
+}
+
+#nav-mobile-lhs, #nav-mobile-rhs{
+    font-family: acumin-pro, sans-serif;
+    font-weight: 400;
+}
+
+.text-shadow {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+/*--For screen sizes up to 600px--*/
+@media screen and (max-width: 600px){
+ .brand-logo img{
+    height: 112px;}  
+    
+
 }
