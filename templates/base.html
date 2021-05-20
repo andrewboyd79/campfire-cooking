@@ -33,16 +33,17 @@
         </nav>
 
     <!--Side Navbar-->
-        <ul class="sidenav text-shadow blue-grey lighten-2 white-text" id="mobile-nav">
-            <li><a href="#" class="white-text"><i class="material-icons left white-text">add_circle</i>Add recipe</a></li>
-            <li><a href="#" class="white-text"><i class="material-icons left white-text">book</i>My recipe</a></li>
-            <li><a href="#" class="white-text"><i class="material-icons left white-text">account_circle</i>Login</a></li>
-            <li><a href="#" class="white-text"><i class="material-icons left white-text">input</i>Register</a></li>
-            <li><a href="#" class="white-text"><i class="material-icons left white-text">close</i>Logout</a></li>
+        <ul class="sidenav text-shadow blue-grey lighten-2 white-text center" id="mobile-nav">
+            <a href="{{ url_for('recipes') }}" class="brand-logo"><img class="z-depth-4 center" src="{{url_for('static', filename='images/Campfire-Cooking-Logo.png') }}" alt="campfire cooking logo"> </a>
+            <li><a href="#" class="white-text"><i class="material-icons white-text">add_circle</i>Add recipe</a></li>
+            <li><a href="#" class="white-text"><i class="material-icons white-text">book</i>My recipe</a></li>
+            <li><a href="#" class="white-text"><i class="material-icons white-text">account_circle</i>Login</a></li>
+            <li><a href="#" class="white-text"><i class="material-icons white-text">input</i>Register</a></li>
+            <li><a href="#" class="white-text"><i class="material-icons white-text">close</i>Logout</a></li>
         </ul>
     </header>
 
-    <div class="container">
+    <div class="container main_content">
 
     {% block content %}
 
@@ -51,9 +52,32 @@
 
     </div>
 
+    <footer class="page-footer text-shadow blue-grey darken-2 center-align">
+          <div class="container">
+            <ul>
+                <li>
+                    <a href="https://www.twitter.com" class="waves-effect waves-light btn-floating social twitter blue-grey darken-2"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com" class="waves-effect waves-light btn-floating social facebook blue-grey darken-2"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com" class="waves-effect waves-light btn-floating social instagram blue-grey darken-2"><i class="fa fa-instagram"></i></a>
+                </li>
+
+            </ul>
+            </div>
+            
+          <div class="footer-copyright">
+            <div class="container">
+            This website has been produced by Andrew Boyd
+            </div>
+          </div>
+        </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/697e0c65d6.js" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
