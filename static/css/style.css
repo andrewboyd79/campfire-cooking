@@ -21,6 +21,11 @@ body {
     border-radius: 50%;
 }
 
+.logo-alt{
+    max-height: 10rem;
+    border-radius: 50%;
+}
+
 #nav-mobile-lhs, #nav-mobile-rhs{
     font-family: acumin-pro, sans-serif;
     font-weight: 400;
@@ -43,10 +48,51 @@ footer li {
     font-size: 0.75rem;
 }
 
+.form-container{
+    margin-top: 5rem;
+}
 
+.form-wrapper{
+    margin-top: 2.5rem;
+}
+
+.form-welcome h5{
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.form-details h6{
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.input-field label{
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.card-panel{
+    border-radius: 1.25rem;
+}
+
+.btn {
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+.registration-benefits i{
+    margin-right: 0.5rem;
+}
 /*--For screen sizes up to 600px--*/
 @media screen and (max-width: 600px){
  .brand-logo img{
     height: 112px;}  
+
+
+}
+
+@media screen and (min-width:992px){  
+
 
 }

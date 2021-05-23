@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row form-container grey-text text-darken-2">
+    <div class="col form-wrapper s12 l12 xl8 offset-xl2">
+        <div class="card-panel z-depth-4">
+
+            <!--Sign up and benefits - Left hand side section-->
+            <div class="row">
+                <div class="col s12 l6 center form-welcome">
+                    <img class="logo-alt" src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}"
+                        alt="campfire cooking alternative logo">
+                    <h5>Sign up with Campfire Cooking</h5>
+                    <h6 class="hide-on-med-and-down">Benefits of registering include:</h6>
+                    <ul class="registration-benefits hide-on-med-and-down">
+                        <li><i class=" tiny material-icons blue-grey-text">filter_hdr</i>Ability to add, edit and delete
+                            your own recipes</li>
+                        <li><i class=" tiny material-icons blue-grey-text">filter_hdr</i>Share your favourite recipes,
+                            tips and tricks with other users</li>
+                    </ul>
+                    <a class="hide-on-med-and-down" href="{{ url_for('login') }}">Already registered? Login here</a>
+                </div>
+
+                <!--Registration form - Right hand side section-->
+                <form class="col s12 l6 form-details">
+                    <h6 class="center-align hide-on-med-and-down">Accout registration</h6>
+                    
+                    <div class="row">
+                        <div class="input-field col s10 xl4 offset-s1 offset-xl2">
+                            <input placeholder="First name... " id="forename" type="text" class="validate">
+                            <label for="forename">First Name:</label>
+                        </div>
+
+                        <div class="input-field col s10 xl4 offset-s1">
+                            <input placeholder="Last name... " id="surname" type="text" class="validate">
+                            <label for="surname">Last Name:</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <input placeholder="Please select a username... " id="username" type="text"
+                                class="validate">
+                            <label for="username">Username:</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <input placeholder="Please select a password... " id="password" type="password"
+                                class="validate">
+                            <label for="password">Password:</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <input placeholder="Please confirm entered password... " id="confirm_password"
+                                type="password" class="validate">
+                            <label for="confirm_password">Password Confirmation:</label>
+                        </div>
+                    </div>
+
+                    <button class="btn waves-effect waves-grey col s4 offset-s4 orange" type="submit"
+                        name="action">Login
+                        <i class="material-icons left">account_circles</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

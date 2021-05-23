@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row form-container grey-text text-darken-2">
+    <div class="col form-wrapper s12 l8 offset-l2">
+        <div class="card-panel z-depth-4">
+            <!--Welcome and info - Left hand side section-->
+            <div class="row">
+                <div class="col s12 l6 center form-welcome">
+                    <img class="logo-alt" src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}" alt="campfire cooking alternative logo">
+                    <h4 class="hide-on-med-and-down">Welcome</h4>
+                    <p class="hide-on-med-and-down">Don't have an account?<br> Create your account - it takes less than a minute</p>
+                    <a class="hide-on-med-and-down" href="{{ url_for('register') }}">Register</a>
+                </div>
+                
+            <!--Login form - Right hand side section-->
+                <form class="col s12 l6 form-details">
+                    <h6 class="center-align">Login to your account</h6>
+                    <div class="row">
+                            <div class="input-field col s10 l8 offset-s1 offset-l2">
+                                <input placeholder="Please select a username... " id="username" type="text" class="validate">
+                                <label for="username">Username:</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s10 l8 offset-s1 offset-l2">
+                                <input placeholder="Please select a password... "id="password" type="password" class="validate">
+                                <label for="password">Password:</label>
+                            </div>
+                        </div>
+
+                        <button class="btn waves-effect waves-grey col s4 offset-s4 orange" type="submit" name="action">Login
+                            <i class="material-icons left">account_circles</i>
+                        </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
