@@ -7,7 +7,7 @@
 
             <!--Sign up and benefits - Left hand side section-->
             <div class="row">
-                <div class="col s12 l6 center form-welcome">
+                <div class="col s12 l4 xl4 center form-welcome">
                     <img class="logo-alt" src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}"
                         alt="campfire cooking alternative logo">
                     <h5>Sign up with Campfire Cooking</h5>
@@ -22,47 +22,50 @@
                 </div>
 
                 <!--Registration form - Right hand side section-->
-                <form class="col s12 l6 form-details">
+                <form class="col s12 l8 xl8 form-details" method="POST" action="{{ url_for('register') }}">
                     <h6 class="center-align hide-on-med-and-down">Accout registration</h6>
                     
                     <div class="row">
-                        <div class="input-field col s10 xl4 offset-s1 offset-xl2">
-                            <input placeholder="First name... " id="forename" type="text" class="validate">
-                            <label for="forename">First Name:</label>
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <input placeholder="First name... " id="forename" name="forename" type="text" minlength="3" maxlength="25" pattern="^[a-zA-Z]{3,25}" class="validate">
+                            <label for="forename">* First Name:</label>
+                            <span class="helper-text" data-error="Forename unsuitable - must be between 3 & 25 characters" data-success="Surname suitable"></span>
                         </div>
 
-                        <div class="input-field col s10 xl4 offset-s1">
-                            <input placeholder="Last name... " id="surname" type="text" class="validate">
-                            <label for="surname">Last Name:</label>
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <input placeholder="Last name... " id="surname" name="surname" type="text" minlength="3" maxlength="35" pattern="^[a-zA-Z]{3,35}" class="validate">
+                            <label for="surname">* Last Name:</label>
+                            <span class="helper-text" data-error="Surname unsuitable - must be between 3 & 35 characters" data-success="Surname suitable"></span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <input placeholder="Please select a username... " id="username" type="text"
+                            <input placeholder="Please select a username... " id="username" name="username" minlength="5" maxlength="25" pattern="^[a-zA-Z0-9._]{5,25}" type="text"
                                 class="validate">
                             <label for="username">Username:</label>
+                            <span class="helper-text" data-error="Username unsuitable - must be between 5 & 25 characters" data-success="Username suitable"></span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <input placeholder="Please select a password... " id="password" type="password"
-                                class="validate">
-                            <label for="password">Password:</label>
+                            <input placeholder="Please select a password... " id="password" minlength="8" maxlength="25" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"      type="password" class="validate">
+                            <label for="password">* Password:</label>
+                             <span class="helper-text" data-error="Password unsuitable - ensure password is minimum of 8 characters and contain lowercase, uppercase, numeric and special characters" data-success="Password suitable">* Password must be a minimum of 8 characters and contain lowercase, uppercase, numeric and special characters</span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
                             <input placeholder="Please confirm entered password... " id="confirm_password"
-                                type="password" class="validate">
+                                name = "password" type="password" minlength="8" maxlength="25" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="validate">
                             <label for="confirm_password">Password Confirmation:</label>
                         </div>
                     </div>
 
                     <button class="btn waves-effect waves-grey col s4 offset-s4 orange" type="submit"
-                        name="action">Login
+                        name="action">Register
                         <i class="material-icons left">account_circles</i>
                     </button>
                 </form>
