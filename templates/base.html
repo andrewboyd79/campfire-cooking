@@ -17,30 +17,38 @@
                 
                     <a href="{{ url_for('recipes') }}" class="brand-logo center"><img class="z-depth-4" src="{{url_for('static', filename='images/campfire-cooking-logo.png') }}" alt="campfire cooking logo"> </a>
                     <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
+                    
                     <ul id="nav-mobile-lhs" class="left hide-on-med-and-down ">
+                    {% if session.user %}
                         <li><a href="#"><i class="material-icons left">add_circle</i>Add recipe</a></li>
                         <li><a href="#"><i class="material-icons left">book</i>My recipe</a></li>
                     </ul>
-
+                    {% endif %}
+                    {% if session.user %}
                     <ul id="nav-mobile-rhs" class="right hide-on-med-and-down">
+                        <li><a href="{{ url_for('logout') }}"><i class="material-icons left">close</i>Logout</a></li>
+                    {% else %}
                         <li><a href="{{ url_for('login') }}"><i class="material-icons left">account_circle</i>Login</a></li>
                         <li><a href="{{ url_for('register') }}"><i class="material-icons left">input</i>Register</a></li>
-                        <li><a href="#"><i class="material-icons left">close</i>Logout</a></li>
+                    {% endif %}
                     </ul>
                
             </div>
         </nav>
 
     <!--Side Navbar-->
+        
         <ul class="sidenav text-shadow blue-grey darken-2 white-text center" id="mobile-nav">
             <a href="{{ url_for('recipes') }}" class="brand-logo"><img class="z-depth-4 center" src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}" alt="campfire cooking logo"> </a>
+        {% if session.user %}
             <li><a href="#" class="white-text"><i class="material-icons white-text">add_circle</i>Add recipe</a></li>
             <li><a href="#" class="white-text"><i class="material-icons white-text">book</i>My recipe</a></li>
+            <li><a href="{{ url_for('logout') }}" class="white-text"><i class="material-icons white-text">close</i>Logout</a></li>
+        {% else %}
             <li><a href="{{ url_for('login') }}" class="white-text"><i class="material-icons white-text">account_circle</i>Login</a></li>
-            <li><a href="{{ url_for('register') }}" class="white-text"><i class="material-icons white-text">input</i>Register</a></li>
-            <li><a href="#" class="white-text"><i class="material-icons white-text">close</i>Logout</a></li>
+            <li><a href="{{ url_for('register') }}" class="white-text"><i class="material-icons white-text">input</i>Register</a></li>            
         </ul>
+        {% endif %}
     </header>
 
     <section>
