@@ -3,19 +3,21 @@ html{
 }
 
 body {
-    font-family: acumin-pro, sans-serif;
+    font-family: 'Red Hat Display', sans-serif;
     font-weight: 400;    
 }
 
+
 .flashes{
-    font-family: acumin-pro, sans-serif;
     font-weight: 700;
     max-width: 50vw;
     margin-top: 5rem;
 }
+.container{
+    min-width: 90vw;
+}
 
 .main_content{
-    min-width: 95%;
     margin-top: 65px;
 }
 
@@ -34,8 +36,7 @@ body {
 }
 
 #nav-mobile-lhs, #nav-mobile-rhs{
-    font-family: acumin-pro, sans-serif;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .text-shadow {
@@ -45,6 +46,42 @@ body {
 .sidenav img{
     margin-top: 10px;
 }
+
+.card-image{
+    background-image: url(../images/campfire-cooking-logo-alt.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;   
+}
+
+.card-image img{
+    height:250px;
+}
+
+.card-title{
+    top: 175px;
+}
+
+.recipe-card{
+    border-radius: 1rem;
+}
+
+.recipe-card h6{
+    font-weight: 400;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+}
+
+.recipe-card h5{
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.recipe-info{
+    margin-bottom: 0px;
+}
+
 
 footer li {
     display: inline;

@@ -1,21 +1,69 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for recipe in recipes %}
-        {{ recipe.recipe_name }}<br>
-        {{ recipe.recipe_summary }}<br>
-        {{ recipe.serves }}<br>
-        {{ recipe.prep_time }}<br>
-        {{ recipe.cook_time }}<br>
-        {{ recipe.image_url }}<br>
-       
-        {% for ingredient in recipe.ingredients %}
-            {{ ingredient }}<br>
-        {% endfor %}
-        
-        {% for steps in recipe.method %}
-            {{ steps }}<br>
-        {% endfor %}
+<div class="carousel carousel-slider center blue-grey darken-2">
+    <a class="carousel-item" href="#one!"><img
+            src=""></a>
+    <a class="carousel-item" href="#two!"><img
+            src=""></a>
+</div>
+
+
+    <div class="row container">
+        <div class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix blue-grey-text text-darken-2">textsms</i>
+                    <input type="text" id="autocomplete-input" class="autocomplete blue-grey-text text-darken-2">
+                    <label for="autocomplete-input">Search</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<section>
+    <div class="row">
+        {% for recipe in recipes %}
+        <a class="grey-text text-darken-4" href="">
+        <div class="col s12 m6 l4 xl2">
+            <div class="card recipe-card z-depth-4">
+                <div class="card-image">
+                    <img src=" {{ recipe.image_url }}" alt="">
+                <h5 class="card-title">{{ recipe.recipe_name }}</h5>
+                    {% if session.user %}
+                    <a class="btn-floating halfway-fab waves-effect waves-light orange"><i
+                            class="material-icons">add</i></a>
+                    {% endif %}
+                </div>
+                <div class="row recipe-info">
+                    <div class="col card-content s6 center">
+                        <h6>Prep Time</h6>
+                        <h5>{{ recipe.prep_time }} </h5>
+                    </div>
+                    <div class="card-content col s6 center">
+                        <h6>Cook Time</h6>
+                        <h5>{{ recipe.cook_time }}</h5>
+                    </div>
+                </div>
+                <div class="row recipe-info">
+                    <div class="card-content col s6 center">
+                        <h6>Serves</h6>
+                        <h5>{{ recipe.serves }}</h5>
+                    </div>
+                    <div class="card-content col s6 center">
+                        <h6>Difficulty</h6>
+                        <h5>{{ recipe.difficulty }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endfor %}
+    </a>
+    </div>
+</section>
+
+
+
+            
 
 {% endblock %}

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="[https://use.typekit.net/xox5dyy.css](https://use.typekit.net/xox5dyy.css)">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">   
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Campfire Cooking</title>
@@ -20,12 +21,14 @@
                     
                     <ul id="nav-mobile-lhs" class="left hide-on-med-and-down ">
                     {% if session.user %}
+                        <li><i class="material-icons left">face</i>{{ session.user }}</li>
                         <li><a href="#"><i class="material-icons left">add_circle</i>Add recipe</a></li>
                         <li><a href="#"><i class="material-icons left">book</i>My recipe</a></li>
                     </ul>
                     {% endif %}
-                    {% if session.user %}
+                    
                     <ul id="nav-mobile-rhs" class="right hide-on-med-and-down">
+                    {% if session.user %}
                         <li><a href="{{ url_for('logout') }}"><i class="material-icons left">close</i>Logout</a></li>
                     {% else %}
                         <li><a href="{{ url_for('login') }}"><i class="material-icons left">account_circle</i>Login</a></li>
@@ -57,7 +60,7 @@
             {% if messages %}
                 {% for message in messages %}
                     <div class="row flashes">
-                        <h5 class="text-shadow blue-grey darken-2 white-text center-align">{{ message }}</h5>
+                        <h5 class="text-shadow blue-grey-text text-lighten-2 center-align">{{ message }}</h5>
                     </div>
                 {% endfor %}
             {% endif %}
