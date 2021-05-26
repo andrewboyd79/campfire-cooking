@@ -14,8 +14,7 @@
                     
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <input placeholder="Please add a recipe name... " id="recipe_name" name="recipe_name" minlength="3" type="text"
-                                class="validate">
+                            <input placeholder="" id="recipe_name" name="recipe_name" minlength="3" type="text" class="validate" required>
                             <label for="recipe_name">Recipe Name:</label>
                             <span class="helper-text" data-error="Recipe name must be at least 3 characters in length" data-success=""></span>
                         </div>
@@ -23,56 +22,48 @@
 
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <textarea id="recipe_summary" class="materialize-textarea" placeholder="Please add a recipe description..."></textarea>
+                            <textarea placeholder="" id="recipe_summary" class="materialize-textarea"></textarea>
                             <label for="textarea1">Recipe Description:</label>                            
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s6 xl5 offset-s1 offset-xl2">
-                            <input placeholder="Please add an image url... " id="image_url" name="image_url" minlength="5" type="text"
-                                class="validate">
+                            <input placeholder="" id="image_url" name="image_url" minlength="5" type="text"
+                                class="validate" required>
                             <label for="image_url">Recipe Image URL:</label>
                             <span class="helper-text" data-error="Image URL must be at least 5 characters long" data-success=""></span>
                         </div>
 
                         <div class="input-field col s3 xl2 offset-s1 offset-xl1">
-                            <input placeholder="Difficulty... " id="difficulty" name="difficulty" type="text" class="validate">
+                            <input placeholder="" id="difficulty" name="difficulty" type="text" class="validate" required>
                             <label for="difficulty">Difficulty</label>
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class="input-field col s3 xl2 offset-s1 offset-xl2">
-                            <input placeholder="Serves... " id="serves" name="serves" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate">
+                            <input placeholder="" id="serves" name="serves" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
                             <label for="serves">Serves</label>
                             <span class="helper-text" data-error="Please enter a number this recipe serves" data-success=""></span>
                         </div>
-                        <div class="input-field col s3 xl2 offset-s1 offset-xl1">
-                            <input placeholder="Prep Time... " id="prep_time" name="prep_time" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate">
-                            <label for="prep_time">Prep Time (mins)</label>
+                        <div class="input-field col s2 xl2 offset-s2 offset-xl1">
+                            <input placeholder="" id="prep_time" name="prep_time" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
+                            <label for="prep_time">Prep Time</label>
                             <span class="helper-text" data-error="Please enter a number this recipe serves" data-success=""></span>
                         </div>
 
-                        <div class="input-field col s3 xl2  offset-xl1">
-                            <input placeholder="Cook Time... " id="cook_time" name="cook_time" type="text" class="validate">
-                            <label for="cook_time">Cook Time (mins)</label>
+                        <div class="input-field col s2 xl2  offset-s1 offset-xl1">
+                            <input placeholder="" id="cook_time" name="cook_time" type="text" class="validate" required>
+                            <label for="cook_time">Cook Time</label>
                         </div>
                         
                     </div>
-
-                    <div class="row">
-
-                        
-                        
-                    </div>
-
                     
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <textarea id="ingredients" class="materialize-textarea" placeholder="Please enter the recipe ingredients..."></textarea>
-                            <label for="ingredients">Recipe Ingredients:</label>                            
-                            <span class="helper-text" data-error="Username unsuitable - must be between 5 & 25 characters" data-success="Username suitable"></span>
+                            <textarea id="ingredients" class="materialize-textarea" placeholder="Please list the recipe ingredients..."></textarea>
+                            <label for="ingredients">Recipe Ingredients:</label>                         
                         </div>
                     </div>
 
@@ -80,11 +71,10 @@
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
                             <textarea id="method" class="materialize-textarea" placeholder="Please enter the recipe method..."></textarea>
                             <label for="method">Recipe Method:</label>                            
-                            <span class="helper-text" data-error="Username unsuitable - must be between 5 & 25 characters" data-success="Username suitable"></span>
                         </div>
                     </div>
 
-                    <button class="btn waves-effect waves-grey col s4 offset-s4 orange" type="submit"
+                    <button class="btn waves-effect waves-grey col s4 xl2 offset-s4 offset-xl5 orange" type="submit"
                         name="action">Submit
                         <i class="material-icons left">account_circles</i>
                     </button>
