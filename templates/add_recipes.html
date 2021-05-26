@@ -9,7 +9,7 @@
             <div class="row">
 
                 <!--Registration form - Right hand side section-->
-                <form class="col s12 form-details" method="POST" action="{{ url_for('register') }}">
+                <form class="col s12 form-details" method="POST" action="{{ url_for('add_recipes') }}">
                     <h5 class="center-align">Add Recipe</h5>
                     
                     <div class="row">
@@ -22,8 +22,8 @@
 
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <textarea placeholder="" id="recipe_summary" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Recipe Description:</label>                            
+                            <textarea placeholder="" name="recipe_summary" id="recipe_summary" class="materialize-textarea"></textarea>
+                            <label for="recipe_summary">Recipe Description:</label>                            
                         </div>
                     </div>
 
@@ -37,39 +37,51 @@
 
                         <div class="input-field col s3 xl2 offset-s1 offset-xl1">
                             <input placeholder="" id="difficulty" name="difficulty" type="text" class="validate" required>
-                            <label for="difficulty">Difficulty</label>
+                            <label for="difficulty">Difficulty:</label>
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class="input-field col s3 xl2 offset-s1 offset-xl2">
                             <input placeholder="" id="serves" name="serves" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
-                            <label for="serves">Serves</label>
+                            <label for="serves">Serves:</label>
                             <span class="helper-text" data-error="Please enter a number this recipe serves" data-success=""></span>
                         </div>
                         <div class="input-field col s2 xl2 offset-s2 offset-xl1">
                             <input placeholder="" id="prep_time" name="prep_time" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
-                            <label for="prep_time">Prep Time</label>
+                            <label for="prep_time">Prep Time:</label>
                             <span class="helper-text" data-error="Please enter a number this recipe serves" data-success=""></span>
                         </div>
 
                         <div class="input-field col s2 xl2  offset-s1 offset-xl1">
                             <input placeholder="" id="cook_time" name="cook_time" type="text" class="validate" required>
-                            <label for="cook_time">Cook Time</label>
+                            <label for="cook_time">Cook Time:</label>
                         </div>
                         
                     </div>
                     
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <textarea id="ingredients" class="materialize-textarea" placeholder="Please list the recipe ingredients..."></textarea>
+                            <textarea id="ingredients" name="ingredients" class="materialize-textarea" placeholder="Please list the recipe ingredients..."></textarea>
+                            <label for="ingredients">Recipe Ingredients:</label>                         
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <textarea id="ingredients" name="ingredients" class="materialize-textarea" placeholder="Please list the recipe ingredients..."></textarea>
                             <label for="ingredients">Recipe Ingredients:</label>                         
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <textarea id="method" class="materialize-textarea" placeholder="Please enter the recipe method..."></textarea>
+                            <textarea id="method" name="method" class="materialize-textarea" placeholder="Please enter the recipe method..."></textarea>
+                            <label for="method">Recipe Method:</label>                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <textarea id="method" name="method" class="materialize-textarea" placeholder="Please enter the recipe method..."></textarea>
                             <label for="method">Recipe Method:</label>                            
                         </div>
                     </div>
