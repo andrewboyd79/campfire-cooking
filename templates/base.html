@@ -22,7 +22,7 @@
                     <ul id="nav-mobile-lhs" class="left hide-on-med-and-down ">
                     {% if session.user %}
                         <li><i class="material-icons left">face</i>{{ session.user }}</li>
-                        <li><a href="#"><i class="material-icons left">add_circle</i>Add recipe</a></li>
+                        <li><a href="{{url_for('add_recipes')}}"><i class="material-icons left">add_circle</i>Add recipe</a></li>
                         <li><a href="#"><i class="material-icons left">book</i>My recipe</a></li>
                     </ul>
                     {% endif %}
@@ -44,7 +44,7 @@
         <ul class="sidenav text-shadow blue-grey darken-2 white-text center" id="mobile-nav">
             <a href="{{ url_for('recipes') }}" class="brand-logo"><img class="z-depth-4 center" src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}" alt="campfire cooking logo"> </a>
         {% if session.user %}
-            <li><a href="#" class="white-text"><i class="material-icons white-text">add_circle</i>Add recipe</a></li>
+            <li><a href="{{url_for('add_recipes')}}" class="white-text"><i class="material-icons white-text">add_circle</i>Add recipe</a></li>
             <li><a href="#" class="white-text"><i class="material-icons white-text">book</i>My recipe</a></li>
             <li><a href="{{ url_for('logout') }}" class="white-text"><i class="material-icons white-text">close</i>Logout</a></li>
         {% else %}
