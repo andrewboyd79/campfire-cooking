@@ -13,6 +13,7 @@ body {
     max-width: 50vw;
     margin-top: 5rem;
 }
+
 .container{
     min-width: 90vw;
 }
@@ -47,6 +48,10 @@ body {
     margin-top: 10px;
 }
 
+.card{
+    border-radius: 0.5rem;
+}
+
 .card-image{
     background-image: url(../images/campfire-cooking-logo-alt.png);
     background-position: center;
@@ -58,12 +63,26 @@ body {
     height:250px;
 }
 
-.card-title{
-    top: 175px;
+.card-content{
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+.card-content h6{
+    font-weight: 500;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
 }
 
 .recipe-card{
     border-radius: 1rem;
+    padding: 0px;
 }
 
 .recipe-card h6{
@@ -79,6 +98,9 @@ body {
 }
 
 .recipe-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     margin-bottom: 0px;
 }
 

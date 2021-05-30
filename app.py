@@ -25,24 +25,32 @@ def recipes():
 
 @app.route("/add_recipes", methods=["GET", "POST"])
 def add_recipes():
+    difficulty = list(mongo.db.difficulty.find())
     if request.method == "POST":
-        
+        preparation = request.form.getlist("prep_time")
+        prep_time = ' '.join(preparation)
+        cooking = request.form.getlist("cook_time")
+        cook_time = ' '.join(cooking)
+        ingredients = request.form.getlist("ingredients")
+        print(ingredients)
+
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
             "recipe_summary": request.form.get("recipe_summary"),
             "serves": request.form.get("serves"),
-            "prep_time": request.form.get("prep_time"),
-            "cook_time": request.form.get("cook_time"),
+            "prep_time": prep_time,
+            "cook_time": cook_time,
             "difficulty": request.form.get("difficulty"),
-            "ingredients": request.form.getlist("ingredients"),
+            "ingredients": ingredients,
             "image_url": request.form.get("image_url"),
-            "method": request.form.getlist("method")
+            "method": request.form.getlist("method"),
+            "added_by": session["user"]
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe successfully added")
         return redirect(url_for("add_recipes"))
 
-    return render_template("add_recipes.html")
+    return render_template("add_recipes.html", difficulty=difficulty)
 
 
 @app.route("/register", methods=["GET", "POST"])

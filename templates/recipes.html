@@ -3,7 +3,7 @@
 
 <div class="carousel carousel-slider center blue-grey darken-2">
     <a class="carousel-item" href="#one!"><img
-            src=""></a>
+            src="https://images.unsplash.com/photo-1466220549276-aef9ce186540?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80"></a>
     <a class="carousel-item" href="#two!"><img
             src=""></a>
 </div>
@@ -25,43 +25,44 @@
     <div>
         <h5 class="text-shadow">Recipes</h5>
     </div>
+
     <div class="row">
         {% for recipe in recipes %}
-        <a class="grey-text text-darken-4" href="">
         <div class="col s12 m6 l4 xl2">
-            <div class="card recipe-card z-depth-4">
+            <div class="card z-depth-4">
                 <div class="card-image">
-                    <img src=" {{ recipe.image_url }}" alt="">
-                <h5 class="card-title">{{ recipe.recipe_name }}</h5>
-                    {% if session.user %}
+                    <img src="{{recipe.image_url}}">
+                    {% if session.user == recipe.added_by %}
                     <a class="btn-floating halfway-fab waves-effect waves-light orange"><i
                             class="material-icons">add</i></a>
                     {% endif %}
                 </div>
-                <div class="row recipe-info">
-                    <div class="col card-content s6 center">
-                        <h6>Prep Time</h6>
-                        <h5>{{ recipe.prep_time }} </h5>
+                <div class="card-content">
+                    <h6>{{recipe.recipe_name}}</h6>
+                    <div class="grid-container">
+                        <div class="grid-content center">
+                            <p>Prep Time:</p>
+                            <h6>{{recipe.prep_time}}</h6>
+                        </div>
+                        <div class="grid-content center">
+                            <p>Cook Time:</p>
+                            <h6>{{recipe.cook_time}}</h6>
+                        </div>
+                        <div class="grid-content center">
+                            <p>Serves:</p>
+                            <h6>{{recipe.serves}}</h6>
+                        </div>
+                        <div class="grid-content center">
+                            <p>Difficulty:</p>
+                            <h6>{{recipe.difficulty}}</h6>
+                        </div>
                     </div>
-                    <div class="card-content col s6 center">
-                        <h6>Cook Time</h6>
-                        <h5>{{ recipe.cook_time }}</h5>
-                    </div>
-                </div>
-                <div class="row recipe-info">
-                    <div class="card-content col s6 center">
-                        <h6>Serves</h6>
-                        <h5>{{ recipe.serves }}</h5>
-                    </div>
-                    <div class="card-content col s6 center">
-                        <h6>Difficulty</h6>
-                        <h5>{{ recipe.difficulty }}</h5>
-                    </div>
+                    <i class="right">recipe added by: {{recipe.added_by}}</i>
                 </div>
             </div>
         </div>
-    {% endfor %}
-    </a>
+        {% endfor %}
+
     </div>
 </section>
 
