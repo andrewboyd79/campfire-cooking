@@ -26,14 +26,16 @@ def recipes():
 @app.route("/add_recipes", methods=["GET", "POST"])
 def add_recipes():
     difficulty = list(mongo.db.difficulty.find())
+    time_unit = list(mongo.db.time_units.find())
+    
     if request.method == "POST":
         preparation = request.form.getlist("prep_time")
         prep_time = ' '.join(preparation)
         cooking = request.form.getlist("cook_time")
         cook_time = ' '.join(cooking)
         ingredients = request.form.getlist("ingredients")
-        print(ingredients)
-
+        
+        
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
             "recipe_summary": request.form.get("recipe_summary"),
@@ -50,7 +52,8 @@ def add_recipes():
         flash("Recipe successfully added")
         return redirect(url_for("add_recipes"))
 
-    return render_template("add_recipes.html", difficulty=difficulty)
+    return render_template("add_recipes.html", difficulty=difficulty,
+     time_unit=time_unit)
 
 
 @app.route("/register", methods=["GET", "POST"])
