@@ -28,17 +28,15 @@
 
     <div class="row">
         {% for recipe in recipes %}
+        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="card-link">
         <div class="col s12 m6 l4 xl2">
             <div class="card z-depth-4">
                 <div class="card-image">
                     <img src="{{recipe.image_url}}">
-                    {% if session.user == recipe.added_by %}
-                    <a class="btn-floating halfway-fab waves-effect waves-light orange"><i
-                            class="material-icons">add</i></a>
-                    {% endif %}
                 </div>
+                
                 <div class="card-content">
-                   <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"><h6 class="truncate">{{recipe.recipe_name}}</h6></a>
+                   <h6 class="truncate">{{recipe.recipe_name}}</h6>
                     <div class="grid-container">
                         <div class="grid-content center">
                             <p>Prep Time:</p>
@@ -59,10 +57,18 @@
                     </div>
                     <i class="right">recipe added by: {{recipe.added_by}}</i>
                 </div>
+
+                <div class="action-buttons">
+                    {% if session.user == recipe.added_by %}
+          <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-flat"><i class="material-icons">create</i></a>
+          <a href=" "class="btn-flat right"><i class="material-icons">close</i></a>           
+        {% endif %}
+                </div>
             </div>
         </div>
+        
         {% endfor %}
-
+        </a>    
     </div>
 </section>
 

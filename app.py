@@ -28,8 +28,7 @@ def recipes():
 def add_recipes():
     difficulty = list(mongo.db.difficulty.find())
     time_unit = list(mongo.db.time_units.find())
-    
-    if request.method == "POST":        
+    if request.method == "POST":
         ingredients = request.form.getlist("ingredients")
         method = request.form.getlist("method")
 
@@ -52,7 +51,7 @@ def add_recipes():
         return redirect(url_for("add_recipes"))
 
     return render_template("add_recipes.html", difficulty=difficulty,
-        time_unit=time_unit)
+    time_unit=time_unit)
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -77,11 +76,12 @@ def edit_recipe(recipe_id):
         flash("Recipe updated successfully")
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-   
     difficulty = list(mongo.db.difficulty.find())
     time_unit = list(mongo.db.time_units.find())
 
-    return render_template("edit_recipe.html", recipe=recipe, difficulty=difficulty, time_unit=time_unit)
+    return render_template(
+        "edit_recipe.html", recipe=recipe, difficulty=difficulty, time_unit=time_unit)
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -145,6 +145,7 @@ def logout():
     flash("Thank you for using Campfire Cooking!")
     session.pop("user")
     return redirect(url_for('login'))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
