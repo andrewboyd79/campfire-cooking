@@ -24,6 +24,13 @@ def recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
+@app.route("/my_recipes")
+def my_recipes():
+    user_recipes = list(mongo.db.recipes.find({"added_by": session["user"]}))
+    return render_template("my_recipes.html", user_recipes=user_recipes)
+
+
+
 @app.route("/add_recipes", methods=["GET", "POST"])
 def add_recipes():
     difficulty = list(mongo.db.difficulty.find())

@@ -23,7 +23,7 @@
                     {% if session.user %}
                         <li><i class="material-icons left">face</i>{{ session.user }}</li>
                         <li><a href="{{url_for('add_recipes')}}"><i class="material-icons left">add_circle</i>Add recipe</a></li>
-                        <li><a href="#"><i class="material-icons left">book</i>My recipe</a></li>
+                        <li><a href="{{url_for('my_recipes')}}"><i class="material-icons left">book</i>My recipe</a></li>
                     </ul>
                     {% endif %}
                     
