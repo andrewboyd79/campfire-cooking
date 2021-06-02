@@ -38,13 +38,13 @@ def add_recipes():
             "recipe_summary": request.form.get("recipe_summary"),
             "serves": request.form.get("serves"),
             "prep_time": request.form.get("prep_time"),
-            "prep_time_units":request.form.get("prep_time_units"),
+            "prep_time_units": request.form.get("prep_time_units"),
             "cook_time": request.form.get("cook_time"),
-            "cook_time_units":request.form.get("cook_time_units"),
+            "cook_time_units": request.form.get("cook_time_units"),
             "difficulty": request.form.get("difficulty"),
             "ingredients": ingredients,
             "image_url": request.form.get("image_url"),
-            "method": request.form.getlist("method"),
+            "method": method,
             "added_by": session["user"]
         }
         mongo.db.recipes.insert_one(recipe)
@@ -52,16 +52,36 @@ def add_recipes():
         return redirect(url_for("add_recipes"))
 
     return render_template("add_recipes.html", difficulty=difficulty,
-     time_unit=time_unit)
+        time_unit=time_unit)
 
 
-@app.route("/edit_recipe/<recipe_id>", methods=["GET","POST"])
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    if request.method == "POST":
+        submit = {
+            "recipe_name": request.form.get("recipe_name"),
+            "recipe_summary": request.form.get("recipe_summary"),
+            "serves": request.form.get("serves"),
+            "prep_time": request.form.get("prep_time"),
+            "prep_time_units": request.form.get("prep_time_units"),
+            "cook_time": request.form.get("cook_time"),
+            "cook_time_units": request.form.get("cook_time_units"),
+            "difficulty": request.form.get("difficulty"),
+            "ingredients": request.form.getlist("ingredients"),
+            "image_url": request.form.get("image_url"),
+            "method": request.form.getlist("method"),
+            "added_by": session["user"]
+        }
+        print(submit)
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        flash("Recipe updated successfully")
+
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+   
     difficulty = list(mongo.db.difficulty.find())
     time_unit = list(mongo.db.time_units.find())
-    return render_template("edit_recipe.html", recipe = recipe, difficulty=difficulty, time_unit=time_unit)
 
+    return render_template("edit_recipe.html", recipe=recipe, difficulty=difficulty, time_unit=time_unit)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -122,7 +142,7 @@ def login():
 
 @app.route("/logout")
 def logout():
-    flash ("Thank you for using Campfire Cooking!")
+    flash("Thank you for using Campfire Cooking!")
     session.pop("user")
     return redirect(url_for('login'))
 

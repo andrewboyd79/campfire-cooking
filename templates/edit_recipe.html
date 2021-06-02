@@ -8,7 +8,7 @@
             <div class="row">
 
                 <form class="col s12 form-details" method="POST"
-                    action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+                    action="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
                     <h5 class="center-align">Edit Recipe</h5>
 <!--Recipe Title-->
                     <div class="row">
@@ -46,14 +46,14 @@
                         </div>
 
                         <div class="input-field col s5 xl2">
-                            <select id="prep_time_unit" name="prep_time_unit" class="validate" required>
-                                <option value="" disabled selected></option>
+                            <select id="prep_time_unit" name="prep_time_units" class="validate" required>
+                                
                                 {% for unit in time_unit %}
-                                {% if unit.time_unit == recipe.prep_time_units %}
-                                <option value="{{ unit.time_unit }}" selected>{{ unit.time_unit }}</option>
-                                {% else %}
-                                <option value="{{ unit.time_unit }}">{{ unit.time_unit }}</option>
-                                {% endif %}
+                                    {% if unit.time_unit == recipe.prep_time_units %}    
+                                <option value="{{unit.time_unit}}" selected>{{unit.time_unit}}</option>
+                                    {% else%}
+                                    <option value="{{unit.time_unit}}">{{unit.time_unit}}</option>
+                                    {%endif%}
                                 {% endfor %}
                             </select>
                         </div>
@@ -67,7 +67,7 @@
                         </div>
 
                         <div class="input-field col s5 xl2">
-                            <select id="cook_time_unit" name="cook_time_unit" class="validate" required>
+                            <select id="cook_time_unit" name="cook_time_units" class="validate" required>
                                 <option value="" disabled selected></option>
                                 {% for unit in time_unit %}
                                 {% if unit.time_unit == recipe.cook_time_units %}
@@ -123,7 +123,7 @@
                     </div>
 <!--Update recipe Button-->
                     <button class="btn waves-effect waves-grey col s4 xl2 offset-s4 offset-xl5 orange" type="submit"
-                        name="action">Edit
+                        >Edit
                         <i class="material-icons left">account_circles</i>
                     </button>
 
