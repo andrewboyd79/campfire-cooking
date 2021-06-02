@@ -5,107 +5,136 @@
     <div class="col form-wrapper s12 l12 xl10 offset-xl1">
         <div class="card-panel z-depth-4">
 
-            <!--Sign up and benefits - Left hand side section-->
             <div class="row">
 
-                <!--Registration form - Right hand side section-->
                 <form class="col s12 form-details" method="POST" action="{{ url_for('add_recipes') }}">
                     <h5 class="center-align">Add Recipe</h5>
-                    
+<!--Recipe Title-->
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <input placeholder="ex. Chicken Soup" id="recipe_name" name="recipe_name" minlength="3" type="text" class="validate" required>
+                            <input placeholder="ex. Chicken Soup" id="recipe_name" name="recipe_name" minlength="3"
+                                type="text" class="validate" required>
                             <label for="recipe_name">Recipe Name:</label>
-                            <span class="helper-text" data-error="Recipe name must be at least 3 characters in length" data-success=""></span>
+                            <span class="helper-text" data-error="Recipe name must be at least 3 characters in length"
+                                data-success=""></span>
                         </div>
                     </div>
 
+<!--Recipe Description-->
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <textarea placeholder="ex Hearty warming meal" name="recipe_summary" id="recipe_summary" class="materialize-textarea"></textarea>
-                            <label for="recipe_summary">Recipe Description:</label>                            
+                            <input placeholder="ex. A warming hearty supper" id="recipe_summary" name="recipe_summary" minlength="3"
+                                type="text" class="validate" required>
+                            <label for="recipe_name">Recipe Description:</label>
+                            <span class="helper-text" data-error="Recipe description must be at least 3 characters in length"
+                                data-success=""></span>
                         </div>
                     </div>
 
+<!--Recipe Image-->
                     <div class="row">
-                        <div class="input-field col s6 xl5 offset-s1 offset-xl2">
-                            <input placeholder="ex https://www.unsplash.com" id="image_url" name="image_url" minlength="5" type="text"
-                                class="validate" required>
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <input placeholder="ex. https://www.unsplash.com" id="image_url" name="image_url"
+                                type="text" class="validate">
                             <label for="image_url">Recipe Image URL:</label>
-                            <span class="helper-text" data-error="Image URL must be at least 5 characters long" data-success=""></span>
-                        </div>
-
-                        <div class="input-field col s3 xl2 offset-s1 offset-xl1">
-                                <select id="difficulty" name="difficulty" class="validate" required>
-                                    <option value="" disabled selected></option>
-                                    {% for diff in difficulty %}
-                                    <option value="{{ diff.difficulty }}">{{ diff.difficulty }}</option>
-                                    {% endfor %}
-                                </select>
-                                <label>Difficulty:</label>
+                            
                         </div>
                     </div>
-
-                    
+<!--Recipe Prep Timings-->
                     <div class="row">
-                        <div class="input-field col s2 xl1 offset-s1 offset-xl2">
-                            <input placeholder="ex 5 mins" id="prep_time" name="prep_time" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
+                        <div class="input-field col s5 xl1 offset-s1 offset-xl2">
+                            <input placeholder="ex. 5 mins" id="prep_time" name="prep_time" type="text" minlength="1"
+                                maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
                             <label for="prep_time">Prep Time:</label>
-                            <span class="helper-text" data-error="Please enter a number this recipe serves" data-success=""></span>
-                        </div>
-                        <div class="input-field col s2">
-                                <select id="" name="prep_time" class="validate" required>
-                                    <option value="" disabled selected></option>
-                                    {% for time in time_unit %}
-                                    <option value="{{ time.time_unit }}">{{ time.time_unit }}</option>
-                                    {% endfor %}
-                                </select>
+                            <span class="helper-text" data-error="Please enter the preparation time"
+                                data-success=""></span>
                         </div>
 
-                        <div class="input-field col s2 xl1 offset-s1 offset-xl2">
-                            <input placeholder="ex 2 hrs" id="cook_time" name="cook_time" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
-                            <label for="cook_time">Cook Time:</label>
-                            <span class="helper-text" data-error="Please enter a number this recipe serves" data-success=""></span>
+                        <div class="input-field col s5 xl2">
+                            <select id="" name="prep_time_units" class="validate" required>
+                                <option value="" disabled selected></option>
+                                {% for time in time_unit %}
+                                <option value="{{ time.time_unit }}">{{ time.time_unit }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
-                        <div class="input-field col s2">
-                                <select id="" name="cook_time" class="validate" required>
-                                    <option value="" disabled selected></option>
-                                    {% for time in time_unit %}
-                                    <option value="{{ time.time_unit }}">{{ time.time_unit }}</option>
-                                    {% endfor %}
-                                </select>
+                    </div>
+<!--Recipe Cooking Timings-->
+                    <div class="row">
+
+                        <div class="input-field  col s5 xl1 offset-s1 offset-xl2">
+                            <input placeholder="ex. 2 hrs" id="cook_time" name="cook_time" type="text" minlength="1"
+                                maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
+                            <label for="cook_time">Cook Time:</label>
+                            <span class="helper-text" data-error="Please enter the cooking time"
+                                data-success=""></span>
+                        </div>
+                        <div class="input-field col s5 xl2">
+                            <select id="" name="cook_time_units" class="validate" required>
+                                <option value="" disabled selected></option>
+                                {% for time in time_unit %}
+                                <option value="{{ time.time_unit }}">{{ time.time_unit }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                    </div>
+<!--Recipe Details-->
+                    <div class="row">
+                        <div class="input-field col s5 xl2 offset-s1 offset-xl2">
+                            <select id="difficulty" name="difficulty" class="validate" required>
+                                <option value="" disabled selected></option>
+                                {% for diff in difficulty %}
+                                <option value="{{ diff.difficulty }}">{{ diff.difficulty }}</option>
+                                {% endfor %}
+                            </select>
+                            <label>Difficulty:</label>
+                        </div>
+                        
+                        <div class="input-field col s4 xl2 offset-s1 offset-xl2">
+                            <input placeholder="ex. 4" id="serves" name="serves" type="text" minlength="1"
+                                maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
+                            <label for="serves">Serves:</label>
+                            <span class="helper-text" data-error="Please enter the number this recipe serves"
+                                data-success=""></span>
                         </div>                       
                     </div>
 
-                    <div class="row">
-                        <div class="input-field col s2 offset-s1 offset-xl2">
-                            <input placeholder="ex 4/6 adults" id="serves" name="serves" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
-                            <label for="serves">Serves:</label>
-                            <span class="helper-text" data-error="Please enter a number this recipe serves" data-success=""></span>
-                        </div>                        
-                    </div>
-                    
+<!--Recipe Ingredients--> 
                     <div class="row">
                         <div class="input-field col s10 xl4 offset-s1 offset-xl2">
-                            <input placeholder="ex 500g chicken..." id="ingredients" name="ingredients" type="text" required>
+                            <input placeholder="ex 500g chicken..." id="ingredients" name="ingredients" type="text"
+                                required>
                             <label for="ingredients">Recipe Ingredients:</label>
-                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients" type="text"  class="validate">
-                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients" type="text"  class="validate">
-                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients" type="text"  class="validate">
-                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients" type="text"  class="validate">
-                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients" type="text"  class="validate">                         
+                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
+                                type="text" class="validate">
+                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
+                                type="text" class="validate">
+                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
+                                type="text" class="validate">
+                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
+                                type="text" class="validate">
+                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
+                                type="text" class="validate">
                         </div>
-                        <div class="input-field col s10 xl4 offset-s1">
-                            <textarea id="method" name="method" class="materialize-textarea" placeholder="ex Add chicken to pot and brown... "></textarea>
-                            <textarea id="" name="method" class="materialize-textarea" placeholder="Please enter the recipe method..."></textarea>
-                            <textarea id="" name="method" class="materialize-textarea" placeholder="Please enter the recipe method..."></textarea>
-                            <textarea id="" name="method" class="materialize-textarea" placeholder="Please enter the recipe method..."></textarea>
-                            <textarea id="" name="method" class="materialize-textarea" placeholder="Please enter the recipe method..."></textarea>
-                            <textarea id="" name="method" class="materialize-textarea" placeholder="Please enter the recipe method..."></textarea>
-                            <label for="method">Recipe Method:</label>                            
+<!--Recipe Method-->
+                        <div class="input-field col s10 xl4 offset-s1 offset-xl1">
+                            <input placeholder="ex. Cook chicken and onion..." id="method" name="method" type="text"
+                                required>
+                             <label for="method">Recipe Method:</label>
+                            <input placeholder="Please list the method steps..." id="" name="method"
+                                type="text" class="validate">
+                            <input placeholder="Please list the method steps..." id="" name="method"
+                                type="text" class="validate">
+                            <input placeholder="Please list the method steps..." id="" name="method"
+                                type="text" class="validate">
+                            <input placeholder="Please list the method steps..." id="" name="method"
+                                type="text" class="validate">
+                            <input placeholder="Please list the method steps..." id="" name="method"
+                                type="text" class="validate">
                         </div>
                     </div>
-
+<!--Sunmission button--> 
                     <button class="btn waves-effect waves-grey col s4 xl2 offset-s4 offset-xl5 orange" type="submit"
                         name="action">Submit
                         <i class="material-icons left">account_circles</i>

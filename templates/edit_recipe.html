@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row form-container grey-text text-darken-2">
+    <div class="col form-wrapper s12 l12 xl10 offset-xl1">
+        <div class="card-panel z-depth-4">
+
+            <div class="row">
+
+                <form class="col s12 form-details" method="POST"
+                    action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+                    <h5 class="center-align">Edit Recipe</h5>
+<!--Recipe Title-->
+                    <div class="row">
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <input value="{{ recipe.recipe_name }}" id="recipe_name" name="recipe_name" minlength="3"
+                                type="text" class="validate" required>
+                            <label for="recipe_name">Recipe Name:</label>
+                            <span class="helper-text" data-error="Recipe name must be at least 3 characters in length"
+                                data-success=""></span>
+                        </div>
+                    </div>
+<!--Recipe Description-->
+                    <div class="row">
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <textarea name="recipe_summary" id="recipe_summary"
+                                class="materialize-textarea">{{- recipe.recipe_summary -}}</textarea>
+                            <label for="recipe_summary">Recipe Description:</label>
+                        </div>
+                    </div>
+<!--Recipe Image-->
+                    <div class="row">
+                        <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <input value="{{ recipe.image_url }}" id="image_url" name="image_url" type="text" class="validate">
+                            <label for="image_url">Recipe Image URL:</label>
+                        </div>                        
+                    </div>
+<!--Recipe Prep Timings-->
+                    <div class="row">
+                        <div class="input-field col s5 xl1 offset-s1 offset-xl2">
+                            <input value="{{ recipe.prep_time}}" id="prep_time" name="prep_time" type="text"
+                                minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
+                            <label for="prep_time">Prep Time:</label>
+                            <span class="helper-text" data-error="Please enter a number this recipe serves"
+                                data-success=""></span>
+                        </div>
+
+                        <div class="input-field col s5 xl2">
+                            <select id="prep_time_unit" name="prep_time_unit" class="validate" required>
+                                <option value="" disabled selected></option>
+                                {% for unit in time_unit %}
+                                {% if unit.time_unit == recipe.prep_time_units %}
+                                <option value="{{ unit.time_unit }}" selected>{{ unit.time_unit }}</option>
+                                {% else %}
+                                <option value="{{ unit.time_unit }}">{{ unit.time_unit }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+<!--Recipe Cook Timings-->
+                    <div class="row">
+                        <div class="input-field col s5 xl1 offset-s1 offset-xl2">
+                            <input value="{{ recipe.cook_time}}" id="cook_time" name="cook_time" type="text"
+                                minlength="1" maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
+                            <label for="cook_time">Cook Time:</label>
+                        </div>
+
+                        <div class="input-field col s5 xl2">
+                            <select id="cook_time_unit" name="cook_time_unit" class="validate" required>
+                                <option value="" disabled selected></option>
+                                {% for unit in time_unit %}
+                                {% if unit.time_unit == recipe.cook_time_units %}
+                                <option value="{{ unit.time_unit }}" selected>{{ unit.time_unit }}</option>
+                                {% else %}
+                                <option value="{{ unit.time_unit }}">{{ unit.time_unit }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+<!--Recipe Details-->
+                    <div class="row">
+                        <div class="input-field col s5 xl2 offset-s1 offset-xl2">
+                            <select id="difficulty" name="difficulty" class="validate" required>
+                                <option value="" disabled selected></option>
+                                {% for diff in difficulty %}
+                                {% if diff.difficulty == recipe.difficulty %}
+                                <option value="{{ diff.difficulty }}" selected>{{ diff.difficulty }}</option>
+                                {% else %}
+                                <option value="{{ diff.difficulty }}">{{ diff.difficulty }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                            <label>Difficulty:</label>
+                        </div>
+
+                        <div class="input-field col s4 xl2 offset-s1 offset-xl2">
+                            <input value="{{ recipe.serves }}" id="serves" name="serves" type="text" minlength="1"
+                                maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
+                            <label for="serves">Serves:</label>
+                            <span class="helper-text" data-error="Please enter a number this recipe serves"
+                                data-success=""></span>
+                        </div>
+                    </div>
+<!--Recipe Ingredients-->
+                    <div class="row">
+                        <div class="input-field col s10 xl4 offset-s1 offset-xl2">
+                            {% for ingredient in recipe['ingredients'] %}
+                            <input value="{{ingredient}}" id="ingredients" name="ingredients" type="text" required>
+                            {% endfor%}
+                            <label for="ingredients">Recipe Ingredients:</label>
+                        </div>
+                    
+<!--Recipe Method-->
+                                       
+                        <div class="input-field col s10 xl4 offset-s1 offset-xl1">
+                            {% for method in recipe['method'] %}
+                            <textarea id="method" name="method" class="materialize-textarea">{{ method }}</textarea>
+                            {% endfor %}
+                            <label for="method">Recipe Method:</label>
+                        </div>
+                    </div>
+<!--Update recipe Button-->
+                    <button class="btn waves-effect waves-grey col s4 xl2 offset-s4 offset-xl5 orange" type="submit"
+                        name="action">Edit
+                        <i class="material-icons left">account_circles</i>
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

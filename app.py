@@ -2,6 +2,7 @@ import os
 from flask import (
     Flask, render_template, url_for, redirect, flash, request, session)
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -28,20 +29,18 @@ def add_recipes():
     difficulty = list(mongo.db.difficulty.find())
     time_unit = list(mongo.db.time_units.find())
     
-    if request.method == "POST":
-        preparation = request.form.getlist("prep_time")
-        prep_time = ' '.join(preparation)
-        cooking = request.form.getlist("cook_time")
-        cook_time = ' '.join(cooking)
+    if request.method == "POST":        
         ingredients = request.form.getlist("ingredients")
-        
-        
+        method = request.form.getlist("method")
+
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
             "recipe_summary": request.form.get("recipe_summary"),
             "serves": request.form.get("serves"),
-            "prep_time": prep_time,
-            "cook_time": cook_time,
+            "prep_time": request.form.get("prep_time"),
+            "prep_time_units":request.form.get("prep_time_units"),
+            "cook_time": request.form.get("cook_time"),
+            "cook_time_units":request.form.get("cook_time_units"),
             "difficulty": request.form.get("difficulty"),
             "ingredients": ingredients,
             "image_url": request.form.get("image_url"),
@@ -54,6 +53,14 @@ def add_recipes():
 
     return render_template("add_recipes.html", difficulty=difficulty,
      time_unit=time_unit)
+
+
+@app.route("/edit_recipe/<recipe_id>", methods=["GET","POST"])
+def edit_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    difficulty = list(mongo.db.difficulty.find())
+    time_unit = list(mongo.db.time_units.find())
+    return render_template("edit_recipe.html", recipe = recipe, difficulty=difficulty, time_unit=time_unit)
 
 
 @app.route("/register", methods=["GET", "POST"])
