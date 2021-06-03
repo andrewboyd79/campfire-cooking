@@ -45,7 +45,7 @@
             <a href="{{ url_for('recipes') }}" class="brand-logo"><img class="z-depth-4 center" src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}" alt="campfire cooking logo"> </a>
         {% if session.user %}
             <li><a href="{{url_for('add_recipes')}}" class="white-text"><i class="material-icons white-text">add_circle</i>Add recipe</a></li>
-            <li><a href="#" class="white-text"><i class="material-icons white-text">book</i>My recipe</a></li>
+            <li><a href="{{url_for('my_recipes')}}" class="white-text"><i class="material-icons white-text">book</i>My recipe</a></li>
             <li><a href="{{ url_for('logout') }}" class="white-text"><i class="material-icons white-text">close</i>Logout</a></li>
         {% else %}
             <li><a href="{{ url_for('login') }}" class="white-text"><i class="material-icons white-text">account_circle</i>Login</a></li>
@@ -58,9 +58,13 @@
         <!--For displaying flash messages-->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                {% for message in messages %}
+                {% for message in messages %}                   
                     <div class="row flashes">
-                        <h5 class="text-shadow blue-grey-text text-lighten-2 center-align">{{ message }}</h5>
+                        <div class="alert col s8 offset-s2 center-align" role="alert">
+                            <div class="alert card-panel blue-grey darken-2">
+                                <h5 class="white-text text-shadow">{{message}}</h5>
+                            </div>                               
+                        </div>
                     </div>
                 {% endfor %}
             {% endif %}

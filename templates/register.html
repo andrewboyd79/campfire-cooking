@@ -27,13 +27,13 @@
                     
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <input placeholder="First name... " id="forename" name="forename" type="text" minlength="3" maxlength="25" pattern="^[a-zA-Z]{3,25}" class="validate">
+                            <input placeholder="First name... " id="forename" name="forename" type="text" minlength="3" maxlength="25" pattern="^[a-zA-Z]{3,25}" class="validate" required>
                             <label for="forename">* First Name:</label>
                             <span class="helper-text" data-error="Forename unsuitable - must be between 3 & 25 characters" data-success="Surname suitable"></span>
                         </div>
 
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <input placeholder="Last name... " id="surname" name="surname" type="text" minlength="3" maxlength="35" pattern="^[a-zA-Z]{3,35}" class="validate">
+                            <input placeholder="Last name... " id="surname" name="surname" type="text" minlength="3" maxlength="35" pattern="^[a-zA-Z]{3,35}" class="validate" required>
                             <label for="surname">* Last Name:</label>
                             <span class="helper-text" data-error="Surname unsuitable - must be between 3 & 35 characters" data-success="Surname suitable"></span>
                         </div>
@@ -41,8 +41,7 @@
 
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <input placeholder="Please select a username... " id="username" name="username" minlength="5" maxlength="25" pattern="^[a-zA-Z0-9._]{5,25}" type="text"
-                                class="validate">
+                            <input placeholder="Please select a username... " id="username" name="username" minlength="5" maxlength="25" pattern="^[a-zA-Z0-9._]{5,25}" type="text" class="validate" required>
                             <label for="username">Username:</label>
                             <span class="helper-text" data-error="Username unsuitable - must be between 5 & 25 characters" data-success="Username suitable"></span>
                         </div>
@@ -50,7 +49,7 @@
 
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <input placeholder="Please select a password... " id="password" minlength="8" maxlength="25" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"      type="password" class="validate">
+                            <input placeholder="Please select a password... " id="password" minlength="8" maxlength="25" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"      type="password" class="validate" name="password" required>
                             <label for="password">* Password:</label>
                              <span class="helper-text" data-error="Password unsuitable - ensure password is minimum of 8 characters and contain lowercase, uppercase, numeric and special characters" data-success="Password suitable">* Password must be a minimum of 8 characters and contain lowercase, uppercase, numeric and special characters</span>
                         </div>
@@ -59,7 +58,7 @@
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
                             <input placeholder="Please confirm entered password... " id="confirm_password"
-                                name = "password" type="password" minlength="8" maxlength="25" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="validate">
+                                name = "confirm_password" type="password" minlength="8" maxlength="25" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="validate" required>
                             <label for="confirm_password">Password Confirmation:</label>
                         </div>
                     </div>

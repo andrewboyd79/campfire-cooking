@@ -1,7 +1,8 @@
 $(document).ready(function(){
     $('.sidenav').sidenav();
-    $('.carousel').carousel();
     $('select').formSelect();
+    $('.materialboxed').materialbox();
+    $('.slider').slider({indicators: false, height: 550});
     
   });
 

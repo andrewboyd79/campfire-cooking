@@ -30,6 +30,13 @@ def my_recipes():
     return render_template("my_recipes.html", user_recipes=user_recipes)
 
 
+@app.route("/view_recipe/<recipe_id>")
+def view_recipe(recipe_id):
+
+    selected_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    return render_template ("view_recipe.html", selected_recipe=selected_recipe)
+
 
 @app.route("/add_recipes", methods=["GET", "POST"])
 def add_recipes():
@@ -78,7 +85,7 @@ def edit_recipe(recipe_id):
             "method": request.form.getlist("method"),
             "added_by": session["user"]
         }
-        print(submit)
+
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe updated successfully")
 
@@ -100,22 +107,34 @@ def register():
 
         # returns flash message if user exists and resets page
         if existing_user:
-            flash("This username already exists \
-            - please select a new username")
+            flash("Username already exists \
+            - please select a new username or log in")
             return redirect(url_for("register"))
 
         # register if user down't exist
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "forename": request.form.get("forename").lower(),
-            "surname": request.form.get("surname").lower()
-        }
-        mongo.db.users.insert_one(register)
+        password = request.form.get("password")
+        confirm_password = request.form.get("confirm_password")
 
-        # puts new user into session
-        session["user"] = request.form.get("username").lower()
-        flash("Thank you for registering with Campfire Cooking!")
+        # checks for password confirmation
+        if password == confirm_password:
+
+            register = {
+                "username": request.form.get("username").lower(),
+                "password": generate_password_hash(confirm_password),
+                "forename": request.form.get("forename").lower(),
+                "surname": request.form.get("surname").lower()
+            }
+            mongo.db.users.insert_one(register)
+
+            # puts new user into session
+            session["user"] = request.form.get("username").lower()
+            flash("Thank you for registering with Campfire Cooking!")
+            return redirect(url_for("recipes"))
+
+        else:
+            flash("Password not confirmed - please try again!")
+            return redirect(url_for("register"))
+
     return render_template("register.html")
 
 
@@ -131,7 +150,8 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username")))
+                user_forename = mongo.db.users.find_one({"username": session["user"]})
+                flash("Welcome {}".format(user_forename['forename'].capitalize()))
                 return redirect(
                     url_for("recipes", username=session["user"]))
             else:

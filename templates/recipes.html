@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="carousel carousel-slider center blue-grey darken-2">
-    <a class="carousel-item" href="#one!"><img
-            src="https://images.unsplash.com/photo-1466220549276-aef9ce186540?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80"></a>
-    <a class="carousel-item" href="#two!"><img
-            src=""></a>
-</div>
+<div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="https://images.unsplash.com/photo-1466220549276-aef9ce186540?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
+        <div class="caption left-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
 
 
     <div class="row container">
@@ -28,7 +33,7 @@
 
     <div class="row">
         {% for recipe in recipes %}
-        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="card-link">
+        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="card-link">
         <div class="col s12 m6 l4 xl2">
             <div class="card z-depth-4">
                 <div class="card-image">
