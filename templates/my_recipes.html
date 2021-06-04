@@ -1,79 +1,78 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="carousel carousel-slider center blue-grey darken-2">
-    <a class="carousel-item" href="#one!"><img
-            src="https://images.unsplash.com/photo-1466220549276-aef9ce186540?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80"></a>
-    <a class="carousel-item" href="#two!"><img
-            src=""></a>
+<!--Image slider with captions - can take multiple images/captions-->
+<div class="slider">
+    <ul class="slides">
+        <li>
+            <img
+                src="https://images.unsplash.com/photo-1466220549276-aef9ce186540?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
+            <div class="caption right-align">
+                <h3>Your recipes for an open fire</h3>
+            </div>
+        </li>
+    </ul>
 </div>
 
-
+<!--Recipes of the logged in user-->
+<section>
     <div class="row container">
         <div class="col s12">
             <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix blue-grey-text text-darken-2">textsms</i>
-                    <input type="text" id="autocomplete-input" class="autocomplete blue-grey-text text-darken-2">
-                    <label for="autocomplete-input">Search</label>
-                </div>
+                <h5 class="text-shadow">My Recipes</h5>
             </div>
         </div>
-    </div>
-    
-<section>
-    <div>
-        <h5 class="text-shadow">My Recipes</h5>
     </div>
 
     <div class="row">
         {% for recipe in user_recipes %}
+<!--Card is housed in anchor to allow viewing recipe with a click-->
         <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="card-link">
-        <div class="col s12 m6 l4 xl2">
-            <div class="card z-depth-4">
-                <div class="card-image">
-                    <img src="{{recipe.image_url}}">
-                </div>
-                
-                <div class="card-content">
-                   <h6 class="truncate">{{recipe.recipe_name}}</h6>
-                    <div class="grid-container">
-                        <div class="grid-content center">
-                            <p>Prep Time:</p>
-                            <h6>{{recipe.prep_time ~ ' ' ~ recipe.prep_time_units}}</h6>
-                        </div>
-                        <div class="grid-content center">
-                            <p>Cook Time:</p>
-                            <h6>{{recipe.cook_time ~ ' ' ~ recipe.cook_time_units}}</h6>
-                        </div>
-                        <div class="grid-content center">
-                            <p>Serves:</p>
-                            <h6>{{recipe.serves}}</h6>
-                        </div>
-                        <div class="grid-content center">
-                            <p>Difficulty:</p>
-                            <h6>{{recipe.difficulty}}</h6>
-                        </div>
-                    </div>
-                    <i class="right">recipe added by: {{recipe.added_by}}</i>
-                </div>
+            <div class="col s12 m6 l4 xl2">
+                <div class="card z-depth-4">
 
-                <div class="action-buttons">
-                    {% if session.user == recipe.added_by %}
-          <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-flat"><i class="material-icons">create</i></a>
-          <a href=" "class="btn-flat right"><i class="material-icons">close</i></a>           
-        {% endif %}
+<!--Recipe imagery-->
+                    <div class="card-image">
+                        <img src="{{recipe.image_url}}">
+                    </div>
+
+<!--Recipe content and information grid-->
+                    <div class="card-content">
+                        <h6 class="truncate">{{recipe.recipe_name}}</h6>
+                        <div class="grid-container">
+                            <div class="grid-content center">
+                                <p>Prep Time:</p>
+                                <h6>{{recipe.prep_time ~ ' ' ~ recipe.prep_time_units}}</h6>
+                            </div>
+                            <div class="grid-content center">
+                                <p>Cook Time:</p>
+                                <h6>{{recipe.cook_time ~ ' ' ~ recipe.cook_time_units}}</h6>
+                            </div>
+                            <div class="grid-content center">
+                                <p>Serves:</p>
+                                <h6>{{recipe.serves}}</h6>
+                            </div>
+                            <div class="grid-content center">
+                                <p>Difficulty:</p>
+                                <h6>{{recipe.difficulty}}</h6>
+                            </div>
+                        </div>
+                        <i class="right">recipe added by: {{recipe.added_by}}</i>
+                    </div>
+
+<!--Buttons to edit and delete logged in user recipes-->
+                    <div class="action-buttons">
+                        {% if session.user == recipe.added_by %}
+                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-flat"><i
+                                class="material-icons">create</i></a>
+                        <a href=" " class="btn-flat right"><i class="material-icons">close</i></a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        {% endfor %}
-        </a>    
+            {% endfor %}
+        </a>
     </div>
-</section>
-
-
-
-            
+</section>         
 
 {% endblock %}

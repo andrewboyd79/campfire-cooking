@@ -6,11 +6,11 @@
         <div class="card-panel z-depth-4">
 
             <div class="row">
-
+                <!--Form content-->
                 <form class="col s12 form-details" method="POST"
                     action="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
                     <h5 class="center-align">Edit Recipe</h5>
-<!--Recipe Title-->
+                    <!--Recipe Title-->
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
                             <input value="{{ recipe.recipe_name }}" id="recipe_name" name="recipe_name" minlength="3"
@@ -20,7 +20,7 @@
                                 data-success=""></span>
                         </div>
                     </div>
-<!--Recipe Description-->
+                    <!--Recipe Description-->
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
                             <textarea name="recipe_summary" id="recipe_summary"
@@ -28,14 +28,15 @@
                             <label for="recipe_summary">Recipe Description:</label>
                         </div>
                     </div>
-<!--Recipe Image-->
+                    <!--Recipe Image-->
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
-                            <input value="{{ recipe.image_url }}" id="image_url" name="image_url" type="text" class="validate">
+                            <input value="{{ recipe.image_url }}" id="image_url" name="image_url" type="text"
+                                class="validate">
                             <label for="image_url">Recipe Image URL:</label>
-                        </div>                        
+                        </div>
                     </div>
-<!--Recipe Prep Timings-->
+                    <!--Recipe Prep Timings-->
                     <div class="row">
                         <div class="input-field col s5 xl1 offset-s1 offset-xl2">
                             <input value="{{ recipe.prep_time}}" id="prep_time" name="prep_time" type="text"
@@ -47,18 +48,18 @@
 
                         <div class="input-field col s5 xl2">
                             <select id="prep_time_unit" name="prep_time_units" class="validate" required>
-                                
+
                                 {% for unit in time_unit %}
-                                    {% if unit.time_unit == recipe.prep_time_units %}    
+                                {% if unit.time_unit == recipe.prep_time_units %}
                                 <option value="{{unit.time_unit}}" selected>{{unit.time_unit}}</option>
-                                    {% else%}
-                                    <option value="{{unit.time_unit}}">{{unit.time_unit}}</option>
-                                    {%endif%}
+                                {% else%}
+                                <option value="{{unit.time_unit}}">{{unit.time_unit}}</option>
+                                {%endif%}
                                 {% endfor %}
                             </select>
                         </div>
                     </div>
-<!--Recipe Cook Timings-->
+                    <!--Recipe Cook Timings-->
                     <div class="row">
                         <div class="input-field col s5 xl1 offset-s1 offset-xl2">
                             <input value="{{ recipe.cook_time}}" id="cook_time" name="cook_time" type="text"
@@ -79,7 +80,7 @@
                             </select>
                         </div>
                     </div>
-<!--Recipe Details-->
+                    <!--Recipe Details-->
                     <div class="row">
                         <div class="input-field col s5 xl2 offset-s1 offset-xl2">
                             <select id="difficulty" name="difficulty" class="validate" required>
@@ -103,17 +104,17 @@
                                 data-success=""></span>
                         </div>
                     </div>
-<!--Recipe Ingredients-->
+                    <!--Recipe Ingredients-->
                     <div class="row">
                         <div class="input-field col s10 xl4 offset-s1 offset-xl2">
                             {% for ingredient in recipe['ingredients'] %}
-                            <input value="{{ingredient}}" id="ingredients" name="ingredients" type="text" required>
+                            <input value="{{ingredient}}" id="ingredients" name="ingredients" type="text">
                             {% endfor%}
                             <label for="ingredients">Recipe Ingredients:</label>
                         </div>
-                    
-<!--Recipe Method-->
-                                       
+
+                        <!--Recipe Method-->
+
                         <div class="input-field col s10 xl4 offset-s1 offset-xl1">
                             {% for method in recipe['method'] %}
                             <textarea id="method" name="method" class="materialize-textarea">{{ method }}</textarea>
@@ -121,9 +122,9 @@
                             <label for="method">Recipe Method:</label>
                         </div>
                     </div>
-<!--Update recipe Button-->
-                    <button class="btn waves-effect waves-grey col s4 xl2 offset-s4 offset-xl5 orange" type="submit"
-                        >Edit
+                    <!--Update recipe Button-->
+                    <button class="btn waves-effect waves-grey col s4 xl2 offset-s4 offset-xl5 orange"
+                        type="submit">Edit
                         <i class="material-icons left">account_circles</i>
                     </button>
 

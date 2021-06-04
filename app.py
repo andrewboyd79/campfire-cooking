@@ -32,10 +32,8 @@ def my_recipes():
 
 @app.route("/view_recipe/<recipe_id>")
 def view_recipe(recipe_id):
-
     selected_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-
-    return render_template ("view_recipe.html", selected_recipe=selected_recipe)
+    return render_template("view_recipe.html", selected_recipe=selected_recipe)
 
 
 @app.route("/add_recipes", methods=["GET", "POST"])
@@ -65,7 +63,7 @@ def add_recipes():
         return redirect(url_for("add_recipes"))
 
     return render_template("add_recipes.html", difficulty=difficulty,
-    time_unit=time_unit)
+                           time_unit=time_unit)
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -88,13 +86,26 @@ def edit_recipe(recipe_id):
 
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe updated successfully")
+        return redirect(url_for("recipes"))
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     difficulty = list(mongo.db.difficulty.find())
     time_unit = list(mongo.db.time_units.find())
-
-    return render_template(
+    print(recipe)
+    if session["user"] == recipe["added_by"]:
+        return render_template(
         "edit_recipe.html", recipe=recipe, difficulty=difficulty, time_unit=time_unit)
+    else:
+        flash("User does not have access to edit this recipe")
+        return redirect(url_for("recipes"))
+
+
+
+@app.route("/delete_recipe/<deletion_id>")
+def delete_recipe(deletion_id):
+    mongo.db.recipes.delete_one({"_id": ObjectId(deletion_id)})
+    flash("Recipe successfully removed")
+    return redirect(url_for("recipes"))
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -150,8 +161,10 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                user_forename = mongo.db.users.find_one({"username": session["user"]})
-                flash("Welcome {}".format(user_forename['forename'].capitalize()))
+                user_forename = mongo.db.users.find_one(
+                    {"username": session["user"]})
+                flash("Welcome {}".format(
+                    user_forename['forename'].capitalize()))
                 return redirect(
                     url_for("recipes", username=session["user"]))
             else:

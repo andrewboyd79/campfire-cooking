@@ -1,31 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-
+<!--Image slider with captions - can take multiple images/captions-->
 <div class="slider">
     <ul class="slides">
-      <li>
-        <img src="https://images.unsplash.com/photo-1466220549276-aef9ce186540?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
-        <div class="caption left-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
+        <li>
+            <img
+                src="https://images.unsplash.com/photo-1466220549276-aef9ce186540?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
+            <div class="caption right-align">
+                <h3>Cooking over an open fire</h3>
+                <h5 class="light grey-text text-lighten-3">Recipes for every occasion</h5>
+            </div>
+        </li>
     </ul>
-  </div>
+</div>
 
-
-    <div class="row container">
-        <div class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix blue-grey-text text-darken-2">textsms</i>
-                    <input type="text" id="autocomplete-input" class="autocomplete blue-grey-text text-darken-2">
-                    <label for="autocomplete-input">Search</label>
-                </div>
+<!--Search bar-->
+<div class="row container">
+    <div class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix blue-grey-text text-darken-2">textsms</i>
+                <input type="text" id="autocomplete-input" class="autocomplete blue-grey-text text-darken-2">
+                <label for="autocomplete-input">Search</label>
             </div>
         </div>
     </div>
-    
+</div>
+
+<!--All recipes content section-->
 <section>
     <div>
         <h5 class="text-shadow">Recipes</h5>
@@ -34,51 +36,67 @@
     <div class="row">
         {% for recipe in recipes %}
         <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="card-link">
-        <div class="col s12 m6 l4 xl2">
-            <div class="card z-depth-4">
-                <div class="card-image">
-                    <img src="{{recipe.image_url}}">
-                </div>
-                
-                <div class="card-content">
-                   <h6 class="truncate">{{recipe.recipe_name}}</h6>
-                    <div class="grid-container">
-                        <div class="grid-content center">
-                            <p>Prep Time:</p>
-                            <h6>{{recipe.prep_time ~ ' ' ~ recipe.prep_time_units}}</h6>
-                        </div>
-                        <div class="grid-content center">
-                            <p>Cook Time:</p>
-                            <h6>{{recipe.cook_time ~ ' ' ~ recipe.cook_time_units}}</h6>
-                        </div>
-                        <div class="grid-content center">
-                            <p>Serves:</p>
-                            <h6>{{recipe.serves}}</h6>
-                        </div>
-                        <div class="grid-content center">
-                            <p>Difficulty:</p>
-                            <h6>{{recipe.difficulty}}</h6>
-                        </div>
+            <div class="col s12 m6 l4 xl2">
+                <div class="card z-depth-4">
+<!--Card Imagery-->
+                    <div class="card-image">
+                        <img src="{{recipe.image_url}}">
                     </div>
-                    <i class="right">recipe added by: {{recipe.added_by}}</i>
-                </div>
-
-                <div class="action-buttons">
-                    {% if session.user == recipe.added_by %}
-          <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-flat"><i class="material-icons">create</i></a>
-          <a href=" "class="btn-flat right"><i class="material-icons">close</i></a>           
-        {% endif %}
+<!--Card Grid content-->
+                    <div class="card-content">
+                        <h6 class="truncate">{{recipe.recipe_name}}</h6>
+                        <div class="grid-container">
+                            <div class="grid-content center">
+                                <p>Prep Time:</p>
+                                <h6>{{recipe.prep_time ~ ' ' ~ recipe.prep_time_units}}</h6>
+                            </div>
+                            <div class="grid-content center">
+                                <p>Cook Time:</p>
+                                <h6>{{recipe.cook_time ~ ' ' ~ recipe.cook_time_units}}</h6>
+                            </div>
+                            <div class="grid-content center">
+                                <p>Serves:</p>
+                                <h6>{{recipe.serves}}</h6>
+                            </div>
+                            <div class="grid-content center">
+                                <p>Difficulty:</p>
+                                <h6>{{recipe.difficulty}}</h6>
+                            </div>
+                        </div>
+                        <i class="right">recipe added by: {{recipe.added_by}}</i>
+                    </div>
+<!--Cards edit/delete buttons - only displayed for items of logged in user-->
+                    <div class="action-buttons">
+                        {% if session.user == recipe.added_by %}
+                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-flat tooltipped"
+                            data-position="bottom" data-tooltip="Edit Recipe"><i class="material-icons">create</i></a>
+                        
+                        <!-- Modal Trigger -->
+                        <a class="btn-flat right modal-trigger tooltipped" href="#{{recipe._id}}" data-position="bottom"
+                            data-tooltip="Delete Recipe"><i class="material-icons">cancel</i></a>
+                        <!-- Modal Structure -->
+                        <div id="{{recipe._id}}" class="modal">
+                            <div class="modal-content center-align">
+                                <h5>Are you sure you wish to delete this recipe?</h5>
+                            </div>
+                            <div class="modal-footer center">
+                                <a href="{{ url_for('delete_recipe', deletion_id=recipe._id) }}"
+                                    class="modal-close waves-effect waves-green btn-flat">Delete</a>
+                                <a href="" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        {% endfor %}
-        </a>    
+
+            {% endfor %}
+        </a>
     </div>
 </section>
 
 
 
-            
+
 
 {% endblock %}

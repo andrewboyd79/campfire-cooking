@@ -1,110 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Campfire Cooking</title>
 </head>
+
 <body>
     <header>
-    <!--Top Navbar-->
+<!--Top Navbar-->
         <nav>
             <div class="nav-wrapper text-shadow blue-grey lighten-2">
-                
-                    <a href="{{ url_for('recipes') }}" class="brand-logo center"><img class="z-depth-4" src="{{url_for('static', filename='images/campfire-cooking-logo.png') }}" alt="campfire cooking logo"> </a>
-                    <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                    
-                    <ul id="nav-mobile-lhs" class="left hide-on-med-and-down ">
+
+                <a href="{{ url_for('recipes') }}" class="brand-logo center"><img class="z-depth-4"
+                        src="{{url_for('static', filename='images/campfire-cooking-logo.png') }}"
+                        alt="campfire cooking logo"> </a>
+                <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+                <ul id="nav-mobile-lhs" class="left hide-on-med-and-down ">
                     {% if session.user %}
-                        <li><i class="material-icons left">face</i>{{ session.user }}</li>
-                        <li><a href="{{url_for('add_recipes')}}"><i class="material-icons left">add_circle</i>Add recipe</a></li>
-                        <li><a href="{{url_for('my_recipes')}}"><i class="material-icons left">book</i>My recipe</a></li>
-                    </ul>
+                    <li><a href="{{url_for('recipes')}}"><i class="material-icons left">book</i>Recipes</a>
+                    </li>
+                    <li><a href="{{url_for('add_recipes')}}"><i class="material-icons left">add_circle</i>Add recipe</a>
+                    </li>
+                    <li><a href="{{url_for('my_recipes')}}"><i class="material-icons left">book</i>My recipe</a></li>
+                </ul>
                     {% endif %}
-                    
-                    <ul id="nav-mobile-rhs" class="right hide-on-med-and-down">
+
+                <ul id="nav-mobile-rhs" class="right hide-on-med-and-down">
                     {% if session.user %}
-                        <li><a href="{{ url_for('logout') }}"><i class="material-icons left">close</i>Logout</a></li>
+                    <li><i class="material-icons left">face</i>{{ session.user }}</li>
+                    <li><a href="{{ url_for('logout') }}"><i class="material-icons left">cancel</i>Logout</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('login') }}"><i class="material-icons left">account_circle</i>Login</a></li>
-                        <li><a href="{{ url_for('register') }}"><i class="material-icons left">input</i>Register</a></li>
+                    <li><a href="{{ url_for('login') }}"><i class="material-icons left">account_circle</i>Login</a></li>
+                    <li><a href="{{ url_for('register') }}"><i class="material-icons left">input</i>Register</a></li>
                     {% endif %}
-                    </ul>
-               
+                </ul>
+
             </div>
         </nav>
 
-    <!--Side Navbar-->
-        
+<!--Side Navbar-->
+
         <ul class="sidenav text-shadow blue-grey darken-2 white-text center" id="mobile-nav">
-            <a href="{{ url_for('recipes') }}" class="brand-logo"><img class="z-depth-4 center" src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}" alt="campfire cooking logo"> </a>
-        {% if session.user %}
-            <li><a href="{{url_for('add_recipes')}}" class="white-text"><i class="material-icons white-text">add_circle</i>Add recipe</a></li>
-            <li><a href="{{url_for('my_recipes')}}" class="white-text"><i class="material-icons white-text">book</i>My recipe</a></li>
-            <li><a href="{{ url_for('logout') }}" class="white-text"><i class="material-icons white-text">close</i>Logout</a></li>
-        {% else %}
-            <li><a href="{{ url_for('login') }}" class="white-text"><i class="material-icons white-text">account_circle</i>Login</a></li>
-            <li><a href="{{ url_for('register') }}" class="white-text"><i class="material-icons white-text">input</i>Register</a></li>            
+            <a href="{{ url_for('recipes') }}" class="brand-logo"><img class="z-depth-4 center"
+                    src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}"
+                    alt="campfire cooking logo"> </a>
+            {% if session.user %}
+            <li><a href="{{url_for('add_recipes')}}" class="white-text"><i
+                        class="material-icons white-text">add_circle</i>Add recipe</a></li>
+            <li><a href="{{url_for('my_recipes')}}" class="white-text"><i class="material-icons white-text">book</i>
+                My recipe</a></li>
+            <li><a href="{{ url_for('logout') }}" class="white-text"><i
+                        class="material-icons white-text">cancel</i>Logout</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}" class="white-text"><i
+                        class="material-icons white-text">account_circle</i>Login</a></li>
+            <li><a href="{{ url_for('register') }}" class="white-text"><i
+                        class="material-icons white-text">input</i>Register</a></li>
         </ul>
         {% endif %}
     </header>
 
+<!--For displaying flash messages-->
     <section>
-        <!--For displaying flash messages-->
         {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}                   
-                    <div class="row flashes">
-                        <div class="alert col s8 offset-s2 center-align" role="alert">
-                            <div class="alert card-panel blue-grey darken-2">
-                                <h5 class="white-text text-shadow">{{message}}</h5>
-                            </div>                               
-                        </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row flashes">
+            <div class="alert col s8 offset-s2 center-align" id="flash-close">
+                <div class="alert card-panel blue-grey darken-2">
+                    <h5 class="white-text text-shadow">{{message}}</h5>
+                    <i class="material-icons white-text">cancel</i>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
         {% endwith %}
     </section>
-    
-    <div class="container main_content">
 
-    {% block content %}
+<!--Main content block-->
+    <section>
+        <div class="container main_content">
+<!--Pages content block -->
+        {% block content %}
 
-    {% endblock %}
+        {% endblock %}
 
-    </div>
+        </div>
+    </section>    
 
+<!--Footer section-->
     <footer class="page-footer text-shadow blue-grey lighten-2 center-align">
-          <div class="container">
+        <div class="container">
             <ul>
                 <li>
-                    <a href="https://www.twitter.com" class="waves-effect waves-light btn-floating social twitter blue-grey darken-2" target="self"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.twitter.com"
+                        class="waves-effect waves-light btn-floating social twitter blue-grey darken-2" target="self"><i
+                            class="fa fa-twitter"></i></a>
                 </li>
                 <li>
-                    <a href="https://www.facebook.com" class="waves-effect waves-light btn-floating social facebook blue-grey darken-2 " target="self"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.facebook.com"
+                        class="waves-effect waves-light btn-floating social facebook blue-grey darken-2 "
+                        target="self"><i class="fa fa-facebook"></i></a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com" class="waves-effect waves-light btn-floating social instagram blue-grey darken-2" target="self"><i class="fa fa-instagram"></i></a>
+                    <a href="https://www.instagram.com"
+                        class="waves-effect waves-light btn-floating social instagram blue-grey darken-2"
+                        target="self"><i class="fa fa-instagram"></i></a>
                 </li>
 
             </ul>
-            </div>
-            
-          <div class="footer-copyright">
-            <div class="container">
-            This website has been produced by Andrew Boyd
-            </div>
-          </div>
-        </footer>
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> 
+        <div class="footer-copyright">
+            <div class="container">
+                This website has been produced by Andrew Boyd
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://kit.fontawesome.com/697e0c65d6.js" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 </html>

@@ -4,35 +4,43 @@
 <div class="row form-container grey-text text-darken-2">
     <div class="col form-wrapper s12 l8 offset-l2">
         <div class="card-panel z-depth-4">
-            <!--Welcome and info - Left hand side section-->
+
+<!--Welcome and info content - Left hand side-->
             <div class="row">
                 <div class="col s12 l6 center form-welcome">
-                    <img class="logo-alt" src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}" alt="campfire cooking alternative logo">
+                    <img class="logo-alt" src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}"
+                        alt="campfire cooking alternative logo">
                     <h4 class="hide-on-med-and-down">Welcome</h4>
-                    <p class="hide-on-med-and-down">Don't have an account?<br> Create your account - it takes less than a minute</p>
+                    <p class="hide-on-med-and-down">Don't have an account?<br> Create your account - it takes less than
+                        a minute</p>
                     <a class="hide-on-med-and-down" href="{{ url_for('register') }}">Register</a>
                 </div>
-                
-            <!--Login form - Right hand side section-->
+
+<!--Login form - Right hand side-->
                 <form class="col s12 l6 form-details" method="POST" action="{{ url_for('login') }}">
                     <h5 class="center-align">Login to your account</h5>
                     <div class="row">
-                            <div class="input-field col s10 l8 offset-s1 offset-l2">
-                                <input placeholder="Please select a username... " id="username" name="username" minlength="5" maxlength="25" pattern="^[a-zA-Z0-9._]{5,25}" type="text" class="validate">
-                                <label for="username">Username:</label>
-                            </div>
+                        <div class="input-field col s10 l8 offset-s1 offset-l2">
+                            <input placeholder="Please select a username... " id="username" name="username"
+                                minlength="5" maxlength="25" pattern="^[a-zA-Z0-9._]{5,25}" type="text"
+                                class="validate">
+                            <label for="username">Username:</label>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="input-field col s10 l8 offset-s1 offset-l2">
-                                <input placeholder="Please select a password... "id="password" name="password" minlength="8" maxlength="25" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" class="validate">
-                                <label for="password">Password:</label>
-                            </div>
+                    <div class="row">
+                        <div class="input-field col s10 l8 offset-s1 offset-l2">
+                            <input placeholder="Please select a password... " id="password" name="password"
+                                minlength="8" maxlength="25" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                type="password" class="validate">
+                            <label for="password">Password:</label>
                         </div>
+                    </div>
 
-                        <button class="btn waves-effect waves-grey col s4 offset-s4 orange" type="submit" name="action">Login
-                            <i class="material-icons left">account_circles</i>
-                        </button>
+                    <button class="btn waves-effect waves-grey col s4 offset-s4 orange" type="submit"
+                        name="action">Login
+                        <i class="material-icons left">account_circles</i>
+                    </button>
                 </form>
             </div>
         </div>
