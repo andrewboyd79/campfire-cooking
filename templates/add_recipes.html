@@ -8,13 +8,14 @@
             <div class="row">
 
                 <form class="col s12 form-details" method="POST" action="{{ url_for('add_recipes') }}">
+                    <a href="{{url_for('recipes')}}"><i class="material-icons right">cancel</i></a>
                     <h5 class="center-align">Add Recipe</h5>
 <!--Recipe Title-->
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <h6>Recipe Name:</h6>
                             <input placeholder="ex. Chicken Soup" id="recipe_name" name="recipe_name" minlength="3"
                                 type="text" class="validate" required>
-                            <label for="recipe_name">Recipe Name:</label>
                             <span class="helper-text" data-error="Recipe name must be at least 3 characters in length"
                                 data-success=""></span>
                         </div>
@@ -23,9 +24,9 @@
 <!--Recipe Description-->
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <h6>Recipe Summary:</h6>
                             <input placeholder="ex. A warming hearty supper" id="recipe_summary" name="recipe_summary" minlength="3"
                                 type="text" class="validate" required>
-                            <label for="recipe_name">Recipe Description:</label>
                             <span class="helper-text" data-error="Recipe description must be at least 3 characters in length"
                                 data-success=""></span>
                         </div>
@@ -34,23 +35,23 @@
 <!--Recipe Image-->
                     <div class="row">
                         <div class="input-field col s10 xl8 offset-s1 offset-xl2">
+                            <h6>Recipe Image URL:</h6>
                             <input placeholder="ex. https://www.unsplash.com" id="image_url" name="image_url"
-                                type="text" class="validate">
-                            <label for="image_url">Recipe Image URL:</label>
-                            
+                                type="text" class="validate">                            
                         </div>
                     </div>
 <!--Recipe Prep Timings-->
                     <div class="row">
-                        <div class="input-field col s5 xl1 offset-s1 offset-xl2">
+                        <div class="input-field col s5 xl2 offset-s1 offset-xl2">
+                            <h6>Prep Time:</h6>
                             <input placeholder="ex. 5 mins" id="prep_time" name="prep_time" type="text" minlength="1"
                                 maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
-                            <label for="prep_time">Prep Time:</label>
                             <span class="helper-text" data-error="Please enter the preparation time"
                                 data-success=""></span>
                         </div>
 
                         <div class="input-field col s5 xl2">
+                            <h6>&nbsp</h6>
                             <select id="" name="prep_time_units" class="validate" required>
                                 <option value="" disabled selected></option>
                                 {% for time in time_unit %}
@@ -62,14 +63,15 @@
 <!--Recipe Cooking Timings-->
                     <div class="row">
 
-                        <div class="input-field  col s5 xl1 offset-s1 offset-xl2">
+                        <div class="input-field  col s5 xl2 offset-s1 offset-xl2">
+                            <h6>Cook Time:</h6>
                             <input placeholder="ex. 2 hrs" id="cook_time" name="cook_time" type="text" minlength="1"
                                 maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
-                            <label for="cook_time">Cook Time:</label>
                             <span class="helper-text" data-error="Please enter the cooking time"
                                 data-success=""></span>
                         </div>
                         <div class="input-field col s5 xl2">
+                            <h6>&nbsp</h6>
                             <select id="" name="cook_time_units" class="validate" required>
                                 <option value="" disabled selected></option>
                                 {% for time in time_unit %}
@@ -82,19 +84,19 @@
 <!--Recipe Details-->
                     <div class="row">
                         <div class="input-field col s5 xl2 offset-s1 offset-xl2">
+                            <h6>Difficulty:</h6>
                             <select id="difficulty" name="difficulty" class="validate" required>
                                 <option value="" disabled selected></option>
                                 {% for diff in difficulty %}
                                 <option value="{{ diff.difficulty }}">{{ diff.difficulty }}</option>
                                 {% endfor %}
                             </select>
-                            <label>Difficulty:</label>
                         </div>
                         
                         <div class="input-field col s4 xl2 offset-s1 offset-xl2">
+                            <h6>Serves:</h6>
                             <input placeholder="ex. 4" id="serves" name="serves" type="text" minlength="1"
                                 maxlength="2" pattern="^[0-9]{1,2}" class="validate" required>
-                            <label for="serves">Serves:</label>
                             <span class="helper-text" data-error="Please enter the number this recipe serves"
                                 data-success=""></span>
                         </div>                       
@@ -102,39 +104,30 @@
 
 <!--Recipe Ingredients--> 
                     <div class="row">
-                        <div class="input-field col s10 xl4 offset-s1 offset-xl2">
+                        <div class="input-field col s10 xl4 offset-s1 offset-xl2" id="ingredients-form">
+                            <h6>Recipe Ingredients:</h6>
                             <input placeholder="ex 500g chicken..." id="ingredients" name="ingredients" type="text"
-                                required>
-                            <label for="ingredients">Recipe Ingredients:</label>
-                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
-                                type="text" class="validate">
-                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
-                                type="text" class="validate">
-                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
-                                type="text" class="validate">
-                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
-                                type="text" class="validate">
-                            <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
-                                type="text" class="validate">
+                                required>                           
                         </div>
+                        
 <!--Recipe Method-->
-                        <div class="input-field col s10 xl4 offset-s1 offset-xl1">
+                        <div class="input-field col s10 xl4 offset-s1 offset-xl1" id="methods-form">
+                            <h6>Recipe Method:</h6>
                             <input placeholder="ex. Cook chicken and onion..." id="method" name="method" type="text"
-                                required>
-                             <label for="method">Recipe Method:</label>
-                            <input placeholder="Please list the method steps..." id="" name="method"
-                                type="text" class="validate">
-                            <input placeholder="Please list the method steps..." id="" name="method"
-                                type="text" class="validate">
-                            <input placeholder="Please list the method steps..." id="" name="method"
-                                type="text" class="validate">
-                            <input placeholder="Please list the method steps..." id="" name="method"
-                                type="text" class="validate">
-                            <input placeholder="Please list the method steps..." id="" name="method"
-                                type="text" class="validate">
+                                required>                     
                         </div>
                     </div>
-<!--Sunmission button--> 
+
+                    <div class="row">
+                        <div class="input-field col s10 xl4 offset-s1 offset-xl2" id="ingredients-form">
+                            <h6 id="add-ingredient" class="show-on-large"><i class="material-icons left">add_circle</i>Click to add an additional ingredient</h6>             
+                        </div>
+
+                        <div class="input-field col s10 xl4 offset-s1 offset-xl1" id="methods-form">
+                            <h6 id="add-method-step"><i class="material-icons left">add_circle</i>Click to add additional method step</h6>
+                        </div>
+                    </div>
+                    
                     <button class="btn waves-effect waves-grey col s4 xl2 offset-s4 offset-xl5 orange" type="submit"
                         name="action">Submit
                         <i class="material-icons left">account_circles</i>

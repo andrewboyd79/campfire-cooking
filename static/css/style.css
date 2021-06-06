@@ -7,6 +7,9 @@ body {
     font-family: 'Red Hat Display', sans-serif;
     font-weight: 400;
 }
+a{
+    color: #455a64;
+}
 
 .flashes {
     font-weight: 700;
@@ -143,7 +146,6 @@ footer li {
 }
 
 
-
 .form-container {
     margin-top: 5rem;
 }
@@ -163,7 +165,14 @@ footer li {
     margin-bottom: 1.5rem;
 }
 
-.input-field label {
+.input-field h6 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.input-field {
+    font-size: 0.9rem;
     font-weight: 500;
     text-transform: uppercase;
 }

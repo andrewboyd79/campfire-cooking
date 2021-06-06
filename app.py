@@ -91,7 +91,7 @@ def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     difficulty = list(mongo.db.difficulty.find())
     time_unit = list(mongo.db.time_units.find())
-    print(recipe)
+
     if session["user"] == recipe["added_by"]:
         return render_template(
         "edit_recipe.html", recipe=recipe, difficulty=difficulty, time_unit=time_unit)
@@ -100,12 +100,18 @@ def edit_recipe(recipe_id):
         return redirect(url_for("recipes"))
 
 
-
 @app.route("/delete_recipe/<deletion_id>")
 def delete_recipe(deletion_id):
-    mongo.db.recipes.delete_one({"_id": ObjectId(deletion_id)})
-    flash("Recipe successfully removed")
-    return redirect(url_for("recipes"))
+    deleted_item = mongo.db.recipes.find_one({"_id": ObjectId(deletion_id)})
+
+    if session["user"] == deleted_item["added_by"]:
+        mongo.db.recipes.delete_one(deleted_item)
+        flash("Recipe successfully removed")
+        return redirect(url_for("recipes"))
+    else:
+        flash("User does not have access to delete this recipe")
+        return redirect(url_for("recipes"))
+
 
 
 @app.route("/register", methods=["GET", "POST"])

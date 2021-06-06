@@ -26,7 +26,7 @@
 
                 <ul id="nav-mobile-lhs" class="left hide-on-med-and-down ">
                     {% if session.user %}
-                    <li><a href="{{url_for('recipes')}}"><i class="material-icons left">book</i>Recipes</a>
+                    <li><a href="{{url_for('recipes')}}"><i class="material-icons left">assignment</i>Recipes</a>
                     </li>
                     <li><a href="{{url_for('add_recipes')}}"><i class="material-icons left">add_circle</i>Add recipe</a>
                     </li>
@@ -54,6 +54,8 @@
                     src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}"
                     alt="campfire cooking logo"> </a>
             {% if session.user %}
+            <li><a href="{{url_for('recipes')}}" class="white-text"><i class="material-icons white-text">assignment</i>Recipes</a>
+                    </li>
             <li><a href="{{url_for('add_recipes')}}" class="white-text"><i
                         class="material-icons white-text">add_circle</i>Add recipe</a></li>
             <li><a href="{{url_for('my_recipes')}}" class="white-text"><i class="material-icons white-text">book</i>
@@ -75,7 +77,7 @@
         {% if messages %}
         {% for message in messages %}
         <div class="row flashes">
-            <div class="alert col s8 offset-s2 center-align" id="flash-close">
+            <div class="alert center-align" id="flash-close">
                 <div class="alert card-panel blue-grey darken-2">
                     <h5 class="white-text text-shadow">{{message}}</h5>
                     <i class="material-icons white-text">cancel</i>

@@ -20,4 +20,26 @@ $(document).on("keydown", "form", function(event) {
 })
 
 $('#flash-close').on('click',function(){
-    $(this).parent().fadeOut(500)})
+    $(this).parent().fadeOut(500)});
+
+$('#add-method-step').on('click', function(){
+    $('#methods-form').append(`<i class="material-icons right method-delete">cancel</i>
+    <input placeholder="Please list the method steps..." id="" name="method"
+                                type="text" class="validate">`)
+});
+
+$('#add-ingredient').on('click', function(){
+    $('#ingredients-form').append(`<i class="material-icons right ingredient-delete">cancel</i>
+    <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
+    type="text" class="validate">`)
+});
+
+$('.ingredient-delete').on('click', function(){
+    $(this).next().remove();
+    $(this).remove()
+});
+
+$('.method-delete').on('click', function(){
+    $(this).next().remove();
+    $(this).remove()
+});
