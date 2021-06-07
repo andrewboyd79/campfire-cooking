@@ -15,7 +15,7 @@ $(document).ready(function(){
 Code taken & amended from stackoverflow post/solution 
 (https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter)
 */
-$(document).on("keydown", "form", function(event) { 
+$('#form-details').on("keydown", "form", function(event) { 
     return event.key != "Enter";
 })
 

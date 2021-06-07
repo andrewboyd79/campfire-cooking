@@ -16,16 +16,24 @@
 
 <!--Search bar-->
 <div class="row container">
-    <div class="col s12">
-        <div class="row">
-            <div class="input-field col s12">
+    <form action="{{url_for('search')}}" id="search" method="POST">
+    <div class="col s12 center">
+        <div class="row valign-wrapper">
+            <div class="input-field col s8 offset-s1">
                 
                 <i class="material-icons prefix blue-grey-text text-darken-2">textsms</i>
-                <input type="text" id="autocomplete-input" class="autocomplete blue-grey-text text-darken-2">
+                <input type="text" name="query" id="autocomplete-input" class="autocomplete blue-grey-text text-darken-2" minlength="3">
                 <label for="autocomplete-input">Search</label>
+            </div>
+            <div class="col s2 center">
+                <button class="btn blue-grey darken-2 waves-effect waves-light" type="submit" name="action">Search
+    <i class="material-icons left">send</i>
+  </button>
+  <a href="{{ url_for('recipes') }}" class="btn orange"><i class="material-icons left">close</i>Reset</a>
             </div>
         </div>
     </div>
+    </form>
 </div>
 
 <!--All recipes content section-->
