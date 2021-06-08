@@ -8,8 +8,8 @@
             <div class="row">
                 <!--Form content-->
                 <form class="col s12 form-details" method="POST"
-                    action="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
-                    <a href="{{url_for('recipes')}}"><i class="material-icons right">cancel</i></a>
+                    action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+                    <a href="{{ url_for('recipes') }}"><i class="material-icons right">cancel</i></a>
                     <h5 class="center-align">Edit Recipe</h5>
                     <!--Recipe Title-->
                     <div class="row">
@@ -48,12 +48,13 @@
                         <div class="input-field col s5 xl2">
                             <h6>&nbsp</h6>
                             <select id="prep_time_unit" name="prep_time_units" class="validate" required>
+                                <option value="" disabled selected>Unit</option>
                                 {% for unit in time_unit %}
                                 {% if unit.time_unit == recipe.prep_time_units %}
-                                <option value="{{unit.time_unit}}" selected>{{unit.time_unit}}</option>
-                                {% else%}
-                                <option value="{{unit.time_unit}}">{{unit.time_unit}}</option>
-                                {%endif%}
+                                <option value="{{ unit.time_unit }}" selected>{{ unit.time_unit }}</option>
+                                {% else %}
+                                <option value="{{ unit.time_unit }}">{{ unit.time_unit }}</option>
+                                {% endif %}
                                 {% endfor %}
                             </select>
                         </div>
@@ -69,7 +70,7 @@
                         <div class="input-field col s5 xl2">
                             <h6>&nbsp</h6>
                             <select id="cook_time_unit" name="cook_time_units" class="validate" required>
-                                <option value="" disabled selected></option>
+                                <option value="" disabled selected>Unit</option>
                                 {% for unit in time_unit %}
                                 {% if unit.time_unit == recipe.cook_time_units %}
                                 <option value="{{ unit.time_unit }}" selected>{{ unit.time_unit }}</option>
@@ -110,7 +111,7 @@
                             <h6>Recipe Ingredients:</h6>
                             {% for ingredient in recipe['ingredients'] %}
                             <i class="material-icons right ingredient-delete" >cancel</i>
-                            <input value="{{ingredient}}" id="ingredient" name="ingredients" type="text">
+                            <input value="{{ ingredient }}" id="ingredient" name="ingredients" type="text">
                             {% endfor%}
                         </div>
 
@@ -125,11 +126,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s10 xl4 offset-s1 offset-xl2" id="ingredients-form">
+                        <div class="input-field col s6 xl4 offset-xl2" id="ingredients-form">
                             <h6 id="add-ingredient"><i class="material-icons left">add_circle</i>Click to add an additional ingredient</h6>             
                         </div>
 
-                        <div class="input-field col s10 xl4 offset-s1 offset-xl1" id="methods-form">
+                        <div class="input-field col s6 xl4 offset-xl1" id="methods-form">
                             <h6 id="add-method-step"><i class="material-icons left">add_circle</i>Click to add additional method step</h6>
                         </div>
                     </div>
@@ -138,13 +139,10 @@
                         type="submit">Edit
                         <i class="material-icons left">account_circles</i>
                     </button>
-
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
 
 {% endblock %}

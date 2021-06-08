@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+
 <!--Image slider with captions - can take multiple images/captions-->
 <div class="slider">
     <ul class="slides">
         <li>
-            <img
-                src="https://images.unsplash.com/photo-1466220549276-aef9ce186540?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
+            <img src="https://images.unsplash.com/photo-1466220549276-aef9ce186540?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="food cooking in pan on open fire">
             <div class="caption right-align">
                 <h3>Cooking over an open fire</h3>
                 <h5 class="light grey-text text-lighten-3">Recipes for every occasion</h5>
@@ -16,7 +16,7 @@
 
 <!--Search bar-->
 <div class="row container blue-grey lighten-2">
-    <form action="{{url_for('search')}}" id="search" method="POST">
+    <form action="{{ url_for('search') }}" id="search" method="POST">
     <div class="col s12">
         <div class="row valign-wrapper">
             
@@ -49,30 +49,30 @@
                 <div class="card z-depth-4">
 <!--Card Imagery-->
                     <div class="card-image">
-                        <img src="{{recipe.image_url}}">
+                        <img src="{{ recipe.image_url }}" alt="recipe image">
                     </div>
 <!--Card Grid content-->
                     <div class="card-content">
-                        <h6 class="truncate">{{recipe.recipe_name}}</h6>
+                        <h6 class="truncate">{{ recipe.recipe_name }}</h6>
                         <div class="grid-container">
                             <div class="grid-content center">
                                 <p>Prep Time:</p>
-                                <h6>{{recipe.prep_time ~ ' ' ~ recipe.prep_time_units}}</h6>
+                                <h6>{{ recipe.prep_time ~ ' ' ~ recipe.prep_time_units }}</h6>
                             </div>
                             <div class="grid-content center">
                                 <p>Cook Time:</p>
-                                <h6>{{recipe.cook_time ~ ' ' ~ recipe.cook_time_units}}</h6>
+                                <h6>{{ recipe.cook_time ~ ' ' ~ recipe.cook_time_units }}</h6>
                             </div>
                             <div class="grid-content center">
                                 <p>Serves:</p>
-                                <h6>{{recipe.serves}}</h6>
+                                <h6>{{ recipe.serves }}</h6>
                             </div>
                             <div class="grid-content center">
                                 <p>Difficulty:</p>
-                                <h6>{{recipe.difficulty}}</h6>
+                                <h6>{{ recipe.difficulty }}</h6>
                             </div>
                         </div>
-                        <i class="right">recipe added by: {{recipe.added_by}}</i>
+                        <i class="right">recipe added by: {{ recipe.added_by }}</i>
                     </div>
 <!--Cards edit/delete buttons - only displayed for items of logged in user-->
                     <div class="action-buttons">
@@ -81,10 +81,10 @@
                             data-position="bottom" data-tooltip="Edit Recipe"><i class="material-icons">create</i></a>
                         
                         <!-- Modal Trigger -->
-                        <a class="btn-flat right modal-trigger tooltipped" href="#{{recipe._id}}" data-position="bottom"
+                        <a class="btn-flat right modal-trigger tooltipped" href=" {{ recipe._id }} " data-position="bottom"
                             data-tooltip="Delete Recipe"><i class="material-icons">cancel</i></a>
                         <!-- Modal Structure -->
-                        <div id="{{recipe._id}}" class="modal">
+                        <div id="{{ recipe._id }}" class="modal">
                             <div class="modal-content center-align">
                                 <h5>Are you sure you wish to delete this recipe?</h5>
                             </div>
@@ -98,14 +98,9 @@
                     </div>
                 </div>
             </div>
-
             {% endfor %}
         </a>
     </div>
 </section>
-
-
-
-
 
 {% endblock %}

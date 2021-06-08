@@ -20,17 +20,17 @@
             <div class="nav-wrapper text-shadow blue-grey lighten-2">
 
                 <a href="{{ url_for('recipes') }}" class="brand-logo center"><img class="z-depth-4"
-                        src="{{url_for('static', filename='images/campfire-cooking-logo.png') }}"
+                        src="{{ url_for('static', filename='images/campfire-cooking-logo.png') }}"
                         alt="campfire cooking logo"> </a>
                 <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                 <ul id="nav-mobile-lhs" class="left hide-on-med-and-down ">
                     {% if session.user %}
-                    <li><a href="{{url_for('recipes')}}"><i class="material-icons left">assignment</i>Recipes</a>
+                    <li><a href="{{ url_for('recipes') }}"><i class="material-icons left">assignment</i>Recipes</a>
                     </li>
-                    <li><a href="{{url_for('add_recipes')}}"><i class="material-icons left">add_circle</i>Add recipe</a>
+                    <li><a href="{{ url_for('add_recipes') }}"><i class="material-icons left">add_circle</i>Add recipe</a>
                     </li>
-                    <li><a href="{{url_for('my_recipes')}}"><i class="material-icons left">book</i>My recipe</a></li>
+                    <li><a href="{ {url_for('my_recipes') }}"><i class="material-icons left">book</i>My recipe</a></li>
                 </ul>
                     {% endif %}
 
@@ -51,14 +51,14 @@
 
         <ul class="sidenav text-shadow blue-grey darken-2 white-text center" id="mobile-nav">
             <a href="{{ url_for('recipes') }}" class="brand-logo"><img class="z-depth-4 center"
-                    src="{{url_for('static', filename='images/campfire-cooking-logo-alt.png') }}"
+                    src="{{ url_for('static', filename='images/campfire-cooking-logo-alt.png') }}"
                     alt="campfire cooking logo"> </a>
             {% if session.user %}
-            <li><a href="{{url_for('recipes')}}" class="white-text"><i class="material-icons white-text">assignment</i>Recipes</a>
+            <li><a href="{{ url_for('recipes') }}" class="white-text"><i class="material-icons white-text">assignment</i>Recipes</a>
                     </li>
-            <li><a href="{{url_for('add_recipes')}}" class="white-text"><i
+            <li><a href="{{ url_for('add_recipes') }}" class="white-text"><i
                         class="material-icons white-text">add_circle</i>Add recipe</a></li>
-            <li><a href="{{url_for('my_recipes')}}" class="white-text"><i class="material-icons white-text">book</i>
+            <li><a href="{{ url_for('my_recipes') }}" class="white-text"><i class="material-icons white-text">book</i>
                 My recipe</a></li>
             <li><a href="{{ url_for('logout') }}" class="white-text"><i
                         class="material-icons white-text">cancel</i>Logout</a></li>
