@@ -7,6 +7,7 @@ body {
     font-family: 'Red Hat Display', sans-serif;
     font-weight: 400;
 }
+
 a{
     color: #455a64;
 }
@@ -63,6 +64,10 @@ footer li {
 
 .footer-copyright {
     font-size: 0.75rem;
+}
+
+.tooltipped {
+    color: #ff9800;
 }
 
 /*--Recipes Page --*/
@@ -141,11 +146,16 @@ footer li {
     margin: 0;
 }
 
-.tooltipped {
-    color: #ff9800;
+.recipe_content h6{
+    margin-top: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
-
+.circle{
+    max-height: 35vh;
+    max-width: 35vw;
+}
 .form-container {
     margin-top: 5rem;
 }
@@ -196,7 +206,49 @@ footer li {
         height: 112px;
     }
 
+    .content-grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "one-left one-right"
+    "two-left two-right"
+    "three-left three-right"
+    "four-left four-right";
+    border: 1px solid #212121;
+}
 
+.diff-label{
+    grid-area: one-left;
+}
+
+.serves-label{
+    grid-area: one-right;
+}
+
+.diff-num{
+    grid-area: two-left;
+}
+
+.serves-num{
+    grid-area: two-right;
+}
+
+.prep-label{
+    grid-area: three-left;
+}
+
+.cook-label{
+    grid-area: three-right;
+}
+
+.prep-num{
+    grid-area: four-left;
+}
+
+.cook-num{
+    grid-area: four-right;
+}
 }
 
 @media screen and (min-width:992px) {}

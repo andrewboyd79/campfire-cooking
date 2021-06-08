@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <!--Image slider no caption added - can take multiple images/captions-->
-<div class="slider">
+<div class="slider hide-on-med-and-down">
     <ul class="slides">
         <li>
             <img
@@ -17,29 +17,29 @@
     <div class="col form-wrapper s12">
         <div class="card-panel z-depth-4">
 <!--Recipe Info and imagery-->
-            <div class="row valign-wrapper">
-                <div class="col s5 push-s7">
-                    <img class="materialboxed" width="400" src="{{selected_recipe.image_url}}">
+            <div class="row">
+                <div class="col s12 l4 offset-l1 center">
+                    <img src="{{selected_recipe.image_url }}" alt="recipe image" class="circle responsive-img"> <!-- notice the "circle" class -->
                 </div>
-                <div class="col s5 pull-s6">
+                <div class="col s12 l7 center">
                     <h3>{{selected_recipe.recipe_name}}</h3>
                     <h6>{{selected_recipe.recipe_summary}}</h6>
                 </div>
             </div>
 <!--Recipe Content Grid-->
             <div class="row">
-                <div class="col content-grid-wrapper s10 offset-s1 center-align">
-                    <h6>Serves:</h6>
-                    <h6>Prep Time:</h6>
-                    <h6>Cook Time:</h6>
-                    <h6>Difficulty:</h6>
-                    <h5>{{selected_recipe.serves}}</h5>
-                    <h5>{{selected_recipe.prep_time ~ ' ' ~ selected_recipe.prep_time_units}}</h5>
-                    <h5>{{selected_recipe.cook_time ~ ' ' ~ selected_recipe.cook_time_units}}</h5>
-                    <h5>{{selected_recipe.difficulty}}</h5>
+                <div class="col content-grid-wrapper s12 l10 offset-l1 center-align">
+                    <h6 class="diff-label">Difficulty:</h6>
+                    <h6 class="prep-label">Prep Time:</h6>
+                    <h6 class="cook-label">Cook Time:</h6>
+                    <h6 class="serves-label">Serves:</h6>
+                    <h5 class="diff-num">{{selected_recipe.difficulty}}</h5>
+                    <h5 class="prep-num">{{selected_recipe.prep_time ~ ' ' ~ selected_recipe.prep_time_units}}</h5>
+                    <h5 class="cook-num">{{selected_recipe.cook_time ~ ' ' ~ selected_recipe.cook_time_units}}</h5>
+                    <h5 class="serves-num">{{selected_recipe.serves}}</h5>
                 </div>
 <!--Recipe ingredients and method content-->
-                <div class="col recipe_content s10 l4 offset-s1 offset-l1">
+                <div class="col recipe_content s12 l4 offset-l2">
                     <h6>Ingredients</h6>
                     <ul>
                         {% for ingredient in selected_recipe['ingredients'] %}
@@ -47,7 +47,7 @@
                         {%endfor%}
                     </ul>
                 </div>
-                <div class="col recipe_content s10 l7 offset-s1">
+                <div class="col recipe_content s12 l4">
                     <h6>Method</h6>
                     <ol>
                         {% for method in selected_recipe['method'] %}
