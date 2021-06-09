@@ -1,7 +1,7 @@
 # **Campfire Cooking Website** 
-![Logo](LINK TO PROJECT LOGO)
+![Logo](static/images/campfire-cooking-logo.png)
 
-[View website](LINK TO GITHUB PAGES OR HEROKU)
+[View website](https://andrewboyd79-campfire-cooking.herokuapp.com/recipes)
 
 This Campfire Cooking website has been produced by Andrew Boyd as a Milestone 3 Project for the Code Institute’s Full Stack Web Development course.
 
@@ -40,9 +40,9 @@ As the website relies on contributions from its users it aims to make the proces
 
     - [Features for future releases](#Features-for-future-releases)
 
-3. **[Information Architecture]
-    -[Database Choice](#Database-Choice)
-    -[Data Model](#Data-model)
+3. **[Information Architecture](#Information-Architecture)**
+    - [Database Choice](#Database-Choice)
+    - [Entity Relationship Diagram](#Entity-relationship-diagram)  
 
 4. **[Technologies Used](#Technologies-used)**
     - [Tools](#Tools)
@@ -152,7 +152,7 @@ Consideration has been given to the following when developing a website which me
 ## Design Considerations
 
 ### Colours
-![Colours](LINK TO COLOURS SWATCH) 
+![Colours](static/images/Colour-palette.svg) 
 
 These have been selected to give a clean minimal look to the website and to tie in with the material design colour palette, as provided by Materialize.  
  - blue-grey (#607d8b)
@@ -168,15 +168,33 @@ The combination has been checked on Adobe Colour; no potential conflicts have be
 
 ### Fonts
 
-- The versatile sans-serif font family Acumin Pro has been chosen for use throughout the website at font weights 400 & 700. It performs well at display sizes and weights but also is clear and readable at lower text sizes. It is available on Adobe fonts and if it fails it will be replaced with a sans serif font within the browser.
+- The versatile sans-serif font family Red Hat Display has been chosen for use throughout the website at font weights 400, 500 & 700. It performs well at display sizes and weights but also is clear and readable at lower text sizes. It is available on Adobe fonts and if it fails it will be replaced with a sans serif font within the browser.
 
 ### Icons
-The following Material Design icons will be used throughout this website:
-- [ICON DESCRIPTION]( INSERT REFERENCE) 
+The following icons will be used throughout this website:
 
-The icons will always use the "filled" theme.
+- [account_circles](https://materializecss.com/icons.html)
+- [add_circle](https://materializecss.com/icons.html)
+- [assignment](https://materializecss.com/icons.html)
+- [book](https://materializecss.com/icons.html)
+- [cancel](https://materializecss.com/icons.html)
+- [close](https://materializecss.com/icons.html)
+- [create](https://materializecss.com/icons.html)
+- [facebook](https://fontawesome.com/v5.15/icons/facebook-f?style=brands)
+- [instagram](https://fontawesome.com/v5.15/icons/instagram?style=brands)
+- [twitter](https://fontawesome.com/v5.15/icons/twitter?style=brands)
+- [face](https://materializecss.com/icons.html)
+- [filter_hdr](https://materializecss.com/icons.html)
+- [input](https://materializecss.com/icons.html)
+- [menu](https://materializecss.com/icons.html) 
+
+Where possible, icons will use the "filled" theme for consistency. Material Design icons were used predominantly for consistency of appearance/design; however it was necessary to use Font Awesome icons for the social media links (as no Material Design icon exists). 
+
+The following post/code by Terry Moore was used to create the social media icons [Materialize social](https://www.notion.so/Media-Log-9c78c2f4be534ed49f124fd9ceccb35e#f483ba95c80948e48022249924daaf13)
 
 ### Styling
+The website was styled to give a minimalistic feel in keeping with the minimal nature of campfire cooking
+
 ---
 
 # **Features**
@@ -185,39 +203,80 @@ The website will initially be developed as a Minimal Viable Product (MVP) and de
 ## Initial release features
 Based on importance/feasability analysis the following features will be available in the initial release:
 
-- INSERT INITIAL RELEASE FEATURES
+- Homepage which offers a selection of recipes cards for use campfire cooking from users of the site; ability to get information on the recipe name, prep/cook time, difficulty and serving numbers at a glance
+- Search functionality which allows users to search for terms in recipe name, description, ingredients and method steps
+- Ability for users to register for access, and subsequently login, to the site to add, edit and delete their own campfire cooking recipes to share with others in the campfire cooking community
+- Ability for users to view their "profile" which initially displays recipes they've created, but in subsequent releases will allow for storage of favourite recipes (see features for future releases section)
 
 ## Global Features
 The following features will persist across all website pages to provide a consistent look and feel:
  
  - Header section
     - Logo - the logo (.png file) will be located in the center of the header; it will provide consistent branding.  Clicking on the logo returns the user to the home page.
-    - Navbar - the user registration/login elements will be located to the right hand side of the navbar and will only be displayed if no user has logged in to the website. Once the user has logged in the logout element will sit on the right hand side of the logo with the other navigation elements sitting to the left hand side. Active page elements will be accented to distinguish them from the other navigation links.
+    - Navbar - the user registration/login elements will be located to the left hand side of the navbar and will only be displayed if no user has logged in to the website. Once the user has logged in the user name and logout element will sit on the right hand side of the logo with the other navigation elements (Recipe/Add recipe/My reipe) sitting to the left hand side.
     - Side navigation bar - on smaller screen sizes a side navigation bar will be present under a hamburger menu button and will contain the same navigation link options as the top navbar on larger screen sizes.
     - The header will size responsively.
 
 - Footer Section
-    - The footer will include social media and further navigation links.
-    - The footer elements will resize responsively with elements being displayed in columns on larger screen sizes and in rows on smaller sized screens.
+    - The footer will include social media links.
+    - The footer elements will resize responsively.
 
 ## Home Page Features
- - HOME PAGE DESCRIPTION AND FEATURES
+ - The home page has a hero section displaying images of recipes, and in later releases, current selected collections i.e. summertime favourites
+ - The search functionality allows users to search for specific words or phrases within a recipe name, description, ingredients or method steps. The returned recipes are displayed as cards
+ - The main content block sits directly beneath the search function and displays recipes in a grid of recipe cards. The grid is 6x cards wide on largest displays and reduces to 4x cards, 2x cards and single card wide on smaller displays. Clicking each of the recipe cards takes the user to a new page with full recipe details.
+ - If the user has added recipes to the site they have the chance to edit/delete the recipe directly from the homepage. Clicking the edit recipe icon takes the user to a new page which shows each recipe item and allows the user to add/delete or amend content as necessary. Clicking the delete button allows the user to delete the entire recipe from the site (following confirmation of their decision to delete)
 
-## OTHER PAGES Features
-- OTHER PAGES DESCRIPTION AND FEATURES 
+## View Recipe Page Features
+- The view recipe page shows all the details related to an individual recipe on a larger card layout
+- Recipe name, description and an image is displayed before a details grid gives information on the prep/cook time, difficulty and numbers served in similar format to recipes page - this is to give a consistent feel across the site. The elements size responsively changing from a 4x1 grid on larger displays to a 2x2 grid when screen size is limited
+- The ingredients and method steps are listed side by side on larger displays and in blocks on smaller screen sizes
 
+## Add Recipe Page Features
+- The add recipe page contains a form which users complete to submit a recipe
+- The fields have a variety of validation criteria applied to ensure that all the necessary data is provided
+- To improve the user experience a number of fields are completed through selection from a dropdown menu - the options for which are supplied from other tables within the database (see Information Architecture section for details)
+- Users are asked to submit an image url as opposed to a file upload due to limitations in storing such files within MongoDB
+- A single ingredient and method step is initially provided with the user clicking to add additional steps - this ensures the only the required number of steps/ingredients are added to the database
+- Buttons on the form allow the user to reset the form or submit the recipe. The user recieves a flashed message to indicate successful recipe submission
+
+## Edit Recipe Page Features
+- The edit recipe page consists of the same form as the add recipe page, but which each of the fields filled with the relevant data for the recipe being edited
+- The user can change any of the fields, including adding/deleting ingredients/methos steps
+- Buttons on the form allow the user to cancel editing the form or submit the changes
+
+## Login Page Features
+- The login page consists of a form to let the user enter their username and password and a link to the registration page
+
+## Registration Page Features
+- The registration page consists of a form to let the user sign up for campfire cooking.
+- The fields contain various validation steps and the confirmed password value is hashed before being stored in the database
+- Helper text is used with the fields, indicating if a value is suitable/unsuitable, to provide better user experience
 
 ## Features for future releases
 The following features will be added to the website in future releases:
 
-- INSERT FUTURE FEATURES TO BE RELEASED
+- Collections of recipes which bring together new recipes/seasonal recipes/recipes featuring a specific meat/ingredient
+- Product pages and links to specific products named within recipes i.e. dutch oven would link to the dutch oven product page
+- Separate fields within the ingredients section for numbers, units, ingredients e.g. 1 tbsp salt would be recorded as 3x seaparate values. This would allow for cleaner data entry and better user experience with more dropdowns etc.
+- Increased administrator functionality - ability for site administrator to add/delete values from categories/collections/menus
+
 ---
 
 # **Information Architecture**
 
 ## Database Choice
+The NoSQL database Mongo DB has been chosen to host the data from campfire cooking. The following factors influenced this decision:
 
+- Ease of use and development
+- High performance
+- High availablity
+- Scalability
 
+## Entity Relationship Diagram
+The following Entity Relationship diagram has been produced to show the relationships between the entity sets in the campfireCooking database
+
+[Entity Relationship Diagram](static/images/campfireCooking_entity_relationship_diagram.png)
 
 # **Technologies Used**
 
@@ -241,7 +300,7 @@ The following features will be added to the website in future releases:
 - [GitHub](https://github.com/andrewboyd79/CraftGinsNI) was used to hold the P-L-Services repository 
 - [GitPod](https://gitpod.io/workspaces/) was used as the dev environment for the project
 - [MongoDB](https://www.mongodb.com/cloud/atlas1) was used to host the database for the project
-- [Heoku](https://www.heroku.com/) was used for deployment of the project
+- [Heroku](https://www.heroku.com/) was used for deployment of the project
 
 ---
 
