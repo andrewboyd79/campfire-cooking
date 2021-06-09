@@ -226,6 +226,7 @@ The following features will persist across all website pages to provide a consis
  - The search functionality allows users to search for specific words or phrases within a recipe name, description, ingredients or method steps. The returned recipes are displayed as cards
  - The main content block sits directly beneath the search function and displays recipes in a grid of recipe cards. The grid is 6x cards wide on largest displays and reduces to 4x cards, 2x cards and single card wide on smaller displays. Clicking each of the recipe cards takes the user to a new page with full recipe details.
  - If the user has added recipes to the site they have the chance to edit/delete the recipe directly from the homepage. Clicking the edit recipe icon takes the user to a new page which shows each recipe item and allows the user to add/delete or amend content as necessary. Clicking the delete button allows the user to delete the entire recipe from the site (following confirmation of their decision to delete)
+ - If the admin account is being used the user will have access to edit/delete all recipes to ensure the site is maintained and managed
 
 ## View Recipe Page Features
 - The view recipe page shows all the details related to an individual recipe on a larger card layout

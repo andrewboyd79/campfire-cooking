@@ -99,7 +99,7 @@ def edit_recipe(recipe_id):
     difficulty = list(mongo.db.difficulty.find())
     time_unit = list(mongo.db.time_units.find())
 
-    if session["user"] == recipe["added_by"]:
+    if session["user"] == recipe["added_by"] or session["user"] == "admin_account":
         return render_template(
         "edit_recipe.html", recipe=recipe, difficulty=difficulty, time_unit=time_unit)
     else:
@@ -111,7 +111,7 @@ def edit_recipe(recipe_id):
 def delete_recipe(deletion_id):
     deleted_item = mongo.db.recipes.find_one({"_id": ObjectId(deletion_id)})
 
-    if session["user"] == deleted_item["added_by"]:
+    if session["user"] == deleted_item["added_by"] or session["user"] == "admin_account":
         mongo.db.recipes.delete_one(deleted_item)
         flash("Recipe successfully removed")
         return redirect(url_for("recipes"))
