@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="error-content center card-panel z-depth-4 blue-grey darken-2">
+    <h2 class="white-text text-shadow">Page not found</h2>
+    <h5 class="white-text text-shadow">What you're searching for has gone up in smoke!!</h5>
+    <a href="{{ url_for ('recipes') }}">
+        <h6 class="orange-text">Click here to get back to the Campfire</h6>
+    </a>
+</div>
+
+
+{% endblock %}

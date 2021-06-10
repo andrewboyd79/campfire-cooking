@@ -30,10 +30,10 @@ def my_recipes():
     return render_template("my_recipes.html", user_recipes=user_recipes)
 
 
-@app.route("/search", methods=["GET","POST"])
+@app.route("/search", methods=["GET", "POST"])
 def search():
-    query=request.form.get("query")
-    recipes=list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    query = request.form.get("query")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     return render_template("recipes.html", recipes=recipes)
 
 
@@ -88,7 +88,7 @@ def edit_recipe(recipe_id):
             "ingredients": request.form.getlist("ingredients"),
             "image_url": request.form.get("image_url"),
             "method": request.form.getlist("method"),
-            "added_by": session["user"]
+            "added_by": request.form.get("added")
         }
 
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
@@ -98,10 +98,10 @@ def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     difficulty = list(mongo.db.difficulty.find())
     time_unit = list(mongo.db.time_units.find())
-
+    # page to render only for session user or admin
     if session["user"] == recipe["added_by"] or session["user"] == "admin_account":
         return render_template(
-        "edit_recipe.html", recipe=recipe, difficulty=difficulty, time_unit=time_unit)
+            "edit_recipe.html", recipe=recipe, difficulty=difficulty, time_unit=time_unit)
     else:
         flash("User does not have access to edit this recipe")
         return redirect(url_for("recipes"))
@@ -110,7 +110,7 @@ def edit_recipe(recipe_id):
 @app.route("/delete_recipe/<deletion_id>")
 def delete_recipe(deletion_id):
     deleted_item = mongo.db.recipes.find_one({"_id": ObjectId(deletion_id)})
-
+    # page to render only for session user or admin
     if session["user"] == deleted_item["added_by"] or session["user"] == "admin_account":
         mongo.db.recipes.delete_one(deleted_item)
         flash("Recipe successfully removed")
@@ -118,7 +118,6 @@ def delete_recipe(deletion_id):
     else:
         flash("User does not have access to delete this recipe")
         return redirect(url_for("recipes"))
-
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -200,7 +199,17 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)  # REMOVE PRIOR TO SUBMISSION
+            debug=False)

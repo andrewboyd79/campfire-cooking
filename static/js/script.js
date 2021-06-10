@@ -19,32 +19,38 @@ $(document).on("keydown", "form", function(event) {
     return event.key != "Enter";
 })
 
+/* Close flash msgs */
 $('#flash-close').on('click',function(){
     $(this).parent().fadeOut(500)});
 
+/* Add method steps */    
 $('#add-method-step').on('click', function(){
     $('#methods-form').append(`<i class="material-icons right method-delete">cancel</i>
     <input placeholder="Please list the method steps..." id="" name="method"
                                 type="text" class="validate">`)
 });
 
+/* Add ingredient */
 $('#add-ingredient').on('click', function(){
     $('#ingredients-form').append(`<i class="material-icons right ingredient-delete">cancel</i>
     <input placeholder="Please list the recipe ingredients..." id="" name="ingredients"
     type="text" class="validate">`)
 });
 
+/* Delete ingredient */
 $('.ingredient-delete').on('click', function(){
     $(this).next().remove();
     $(this).remove()
 });
 
+/* Delete method step */
 $('.method-delete').on('click', function(){
     $(this).next().remove();
     $(this).remove()
 });
 
-  validateMaterializeSelect();
+/* Code taken from Code Institute Task Manager Project dropdown validation */
+validateMaterializeSelect();
 
   function validateMaterializeSelect() {
       let classValid = {

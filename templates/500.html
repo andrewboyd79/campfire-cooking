@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="error-content center card-panel z-depth-4 blue-grey darken-2">
+    <h2 class="white-text text-shadow">Internal Server Error</h2>
+    <h5 class="white-text text-shadow">We're having some issues with the campfire fuel!!</h5>
+    <a href="{{ url_for ('recipes') }}">
+        <h6 class="orange-text">Click here to get back to the Campfire</h6>
+    </a>
+</div>
+
+
+{% endblock %}

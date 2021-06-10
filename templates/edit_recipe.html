@@ -133,12 +133,16 @@
                         <div class="input-field col s6 xl4 offset-xl1" id="methods-form">
                             <h6 id="add-method-step"><i class="material-icons left">add_circle</i>Click to add additional method step</h6>
                         </div>
+                        <div class="input-field col hide">
+                            <input value="{{ recipe.added_by }}" id="added" name="added" type="text" class="validate" required>
+                        </div>
                     </div>
                     <!--Update recipe Button-->
                     <button class="btn waves-effect waves-grey col s4 xl2 offset-s4 offset-xl5 orange"
                         type="submit">Edit
                         <i class="material-icons left">account_circles</i>
                     </button>
+                    
                 </form>
             </div>
         </div>
