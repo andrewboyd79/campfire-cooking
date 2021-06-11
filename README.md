@@ -310,7 +310,7 @@ The following Entity Relationship diagram has been produced to show the relation
 
 # **Testing**
 
-A separate [testing.md](documentation/testing.md) file has been created to record the testing.
+A separate [testing.md](Documentation/testing.md) file has been created to record the testing.
 
 ---
 
