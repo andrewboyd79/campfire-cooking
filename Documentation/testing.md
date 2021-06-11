@@ -7,10 +7,16 @@ All testing was conducted on the site deployed from Heroku (https://andrewboyd79
 ---
 
 ## **Contents**
-1. **[Code Validators](#Code-validators)**
-    - [W3C Markup Validation Service](#W3C-markup)
-    - [W3C CSS Validation Service](#W3C-CSS)
-    - [JS Hint Linter](#JS-linter)
+1. **[Functional Testing](#Functional-testing)**
+    - [Register](#Register)
+    - [Logout](#Logout)
+    - [Login](#Login)
+    - [My Recipes](#My-recipes)
+    - [Recipes](#Recipes)
+    - [Add Recipes](#Add-recipes)
+    - [Edit Recipes](#Edit-recipes)
+    - [Delete Recipes](#Delete-recipes)
+    - [Search](#Search)
  
 2. **[User Story testing](#User-story-testing)**
 
@@ -22,166 +28,271 @@ All testing was conducted on the site deployed from Heroku (https://andrewboyd79
 
 5. **[Bugs](#Bugs)**
 
----
-
-# **Code Validators**
-Code validators were used on all .html and .css pages to ensure the code used, in the P-L Services website, was valid.
-
-## [W3C Markup Validation Service](https://validator.w3.org/)
-
-
-Code was validated through Direct Input by copying and pasting the html content directly in to the validator:
-
-index.html
-
-- No errors or warnings to show on index.html
-
-![index.html Markup validation](tests/index.html_validator_report.PNG)
-
-
-placestogo.html
-
-- No errors or warnings to show on placestogo.html
-
-![placestogo.html Markup Validation](tests/placestogo.html_validator_report.PNG)
-
-
-
-## [W3C Markup CSS Service](https://jigsaw.w3.org/css-validator/validator.html.en)
-
-Code was validated by Direct Input by copying and pasting directly in to the validator:
-
-style.css
-
-- No errors found on style.css
-
-![style.css  CSS Validation](tests/style.css_validator_report.PNG)
-
-
-## [JS Hint Linter](https://jshint.com/)
-
-The JavaScript code was validated through jshint by copying and pasting the code directly:
-
-maps.js
-
-![maps.js jshint linter](tests/maps.js_jshint_report.PNG)
-
-producers.js
-
-![producers.js jshint linter page 1](tests/producers.js_jshint_report_p1.PNG)
-
-
-![producers.js jshint linter page 2](tests/producer.js_jshint_report_p2.PNG)
-
-
-![producers.js jshint linter page 3](tests/producer.js_jshint_report_p3.PNG)
-
-sendMail.js
-
-![sendMail.js jshint linter](tests/sendMail.js_jshint_report.PNG)
-
-producersinfo.js
-
-![producersinfo.js jshint linter](tests/producersinfo.js_jshint_report.PNG)
+6. **[Validation](#Validation)**
 
 ---
+
+# **Functional Testing**
+The functionality of each webpage/process was tested from the Heroku deployed site - any issues were noted: 
+
+## Register
+
+The registration process was tested to ensure that all fields on the form were completed fully and the password confirmation checks work as expected:
+
+User cannot register with no information supplied - as expected
+
+![No Information](tests/RegistrationNoInformation.png)
+
+User cannot register having submitted only a forename
+
+![Forename only](tests/RegistrationForenameOnly.png)
+
+User cannot register having only submitted forename/surname
+
+![Forename_Surname](tests/RegistrationForename_Surname.png)
+
+User cannot register without submitting a confirmed password
+
+![No Password confirmation](tests/RegistrationPasswordNoConfirmation.png)
+
+User cannot register when the passwords do not match
+
+![Password Mismatch](tests/RegistrationPasswordMismatch.png)
+
+User can register when all information has been correclty submitted
+
+![Registration Successful](tests/RegistrationSuccessful.png)
+
+---
+
+## Logout
+
+
+User can successfully logout from the site
+
+![Logout successfully](tests/LogoutSuccessful.png)
+
+---
+
+## Login
+
+User cannot login without supplying any information
+
+![No Information](tests/LoginNoInformation.png)
+
+User cannot login with only a username
+
+![Username only](tests/LoginNoPassword.png)
+
+User cannot login with only a password supplied
+
+![Password Only](tests/LoginNoUsername.png)
+
+User cannot login if password is supplied in incorrect format
+
+![Incorrect format](tests/LoginIncorrectPasswordFormat.png)
+
+User cannot login with incorrect password
+
+![Incorrect Password](tests/LoginIncorrectPasswordUsed.png)
+
+User can login successfully when all required information is correctly provided
+
+![Login success](tests/LoginSuccessful.png)
+
+---
+
+## My Recipes
+
+User profile when they have entered no recipes
+
+![No recipes submitted](tests/MyRecipesNoUserRecipes.png)
+
+User profile when user has added recipes
+
+![Recipes Submitted](tests/MyRecipesUserRecipesPresent.png)
+
+---
+
+## Recipes
+
+User cannot edit recipes as they are not the session user of any of the added recipes
+
+![Recipes no edit](tests/RecipesNoEdit.png)
+
+Users can only edit their recipes
+
+![Recipes User Edit](tests/RecipesUsersEdit.png)
+
+Admin users can eit all recipes
+
+![Recipe Admin User](tests/RecipesAdminUser.png)
+
+---
+
+## Edit Recipes
+
+Users can edit recipes they have access to
+
+![Edit](tests/EditRecipe.png)
+
+Users successfully updating recipe
+
+![Edit Success](tests/EditRecipeSuccess.png)
+
+Edited recipe with changes
+
+![Edited recipe](tests/ViewEditedRecipe.png)
+
+---
+
+## Delete Recipes
+
+User with ability to delete recipe
+
+![Delete Recipe](tests/DeleteRecipe.png)
+
+User cancels deletion - recipe remains
+
+![Delete Cancelled](tests/DeleteRecipeCancelled.png)
+
+User successfully deletes recipes
+
+![Delete Successful](tests/DeleteRecipeSuccess.png)
+
+Recipes page shows recipe no longer available
+
+![Recipe Deleted](tests/DeleteRecipeDeleted.png)
+
+---
+
+## Search
+
+User enters a search term
+
+![Search](tests/Search.png)
+
+Recipes are successfully returned to user
+
+![Search return](tests/SearchSuccess.png)
+
+---
+
 # **User story testing**
 
 The user stories from the README.md file were used as a basis for testing.  For each test case the test acceptance criteria, evidence/observations and outcome have been recorded:
 
-**1. "1. As a user I want to find out who produces craft gins in Northern Ireland so that I can experience Northern Irish craft gin"**
+**1. "As a user I want to find campfire recipes so that I can cook meals on an open fire"**
 
 Acceptance criteria:
-- End users should be able to find information on craft gin producers in Northern Ireland.  
+- End users should be able to find campfire recipes  
 - This information should be available on all device sizes.
 
 Evidence/Observations:
-- The placestogo.html page contains information on the location of each gin producer and gin joint.
-- The interactive maps displays their location and the content below gives more information on the producer/bar, their address, what's available from each  
+- The recipes.html page contains recipes suitable for cooking on an open fire 
 
-![User story 1 evidence screenshot 1](tests/UserStory1EvidenceScreenshot1.PNG)
-
-
-![User story 1 evidence screenshot 2](tests/UserStory1EvidenceScreenshot2.PNG)
-
-
-![User story 1 evidence screenshot 3](tests/UserStory1EvidenceScreenshot3.PNG)
-
+![User story 1 evidence screenshot 1](Documentation/tests/RecipesNoEdit.png)
 
 Outcome: Test successful
 
 ---
 
-**2. "2. As a user I want to get more on information on which bars and restaurants sell craft gins so I might sample them"**
+**2. "2. As a user I want to be able to add my own recipes so that others can enjoy them"**
 
 Acceptance criteria:
-- End users should be able to find information on where they might be able to buy/sample gin 
+- End users should be able to upload a recipe 
 - This information should be available on all device sizes.
 
 Evidence/Observations:
-- The detailed information relating to each gin producer outlines which gins types they have available - this let's the user know what gin this producer has to offer
-- The detailed information on the gin joint gives information on each bar
+- Users can upload recipes through the add recipes function
 
-![User story 2 evidence screenshot 1](tests/UserStory2EvidenceScreenshot1.PNG)
-
-
-![User story 2 evidence screenshot 2](tests/UserStory2EvidenceScreenshot2.PNG)
+![User story 2 evidence screenshot 1](Documentation/tests/AddRecipe.png)
 
 Outcome: Test successful
 
 ---
 
-**3. "3. As a user I want the location the gin producer/bar/restaturant so I know how to locate them"**
+**3. "As a user I want to be able to edit my recipes so that I can update/amend details after I've submitted them"**
 
 Acceptance criteria:
-- End users should be able to get the location for each gin producer / gin joint 
+- End users should be able to edit their recipes after submission 
 - This information should be available on all device sizes.
 
 Evidence/Observations:
-- The interactive map on the placestogo.html page displays the location of all/some of the establishments
-- The showall button displays all gin producers / gin joints - checked that all appear on map (see screenshot)
-- Selecting 'Down' from the dropdown displays all gin producers / gin joints in County Down - checked they appear on map (see screenshot)
-- Selecting Gin Joints from the dropdown displays all gin joints - checked they appear on map (see screenshot)
+- Users can edit their recipes through the edit recipes function
 
-![User story 3 evidence screenshot 1](tests/UserStory3EvidenceScreenshot1.PNG)
-
-
-![User story 3 evidence screenshot 2](tests/UserStory3EvidenceScreenshot2.PNG)
-
-
-![User story 3 evidence screenshot 3](tests/UserStory3EvidenceScreenshot3.PNG)
+![User story 3 evidence screenshot 1](Documentation/tests/EditRecipe.png)
 
 Outcome: Test successful
 
 ---
 
-**4. "As a user I want be able to go directly to a producer/bar/restaurant website so that I can find more information/make a reservation"**
+**4. "4. As a user I want to be able to delete my recipes so that I'm in control of my recipe"**
 
 Acceptance criteria:
-- End users should be able to link directly to the gin producer / gin joint website 
+- End users should be able to deleted their recipes 
 - This alternative means should be available on all device sizes.
 
 Evidence/Observations:
-- The more information section of each gin producer / gin joint has another button linking to the producers website
-- This opens the website is a separate window
+- Users can delete their recipes from the recipes page
 
-![User story 4 evidence screenshot 1](tests/UserStory4EvidenceScreenshot1.PNG)
-
-
-![User story 4 evidence screenshot 2](tests/UserStory4EvidenceScreenshot2.PNG)
+![User story 4 evidence screenshot 1](Documentation/tests/DeleteRecipe.png)
 
 Outcome: Test successful
 
 ---
 
-**5. "As gin producer/bar/restaurant I want to showcase my company and my products so that individuals will be encouraged to purchase their products"**
+**5. "5. As a user I want to find out best practices for campfire cooking so that I can improve my cookery"**
 
 Acceptance criteria:
-- The website, should display high quality content throughout 
+- The website, should give users information on how they should cook the recipes 
 - This information should be available on all device sizes.
 
 Evidence/Observations:
-- The evidence from the previous 4 test scripts demonstrates that information is available and accessible for users and showcases each product/establishment
+- The website gives method steps for each recipe
+
+Outcome: Test successful
+
+---
+
+**6. "6. As a user I want to be able to search for recipes so I can quickly find the information I'm looking for"**
+
+Acceptance criteria:
+- The website has search functionality
+- This information should be available on all device sizes.
+
+Evidence/Observations:
+- The website gives method steps for each recipe
+
+![User story 6 evidence screenshot 1](Documentation/tests/Search.png)
+
+Outcome: Test successful
+
+---
+
+**7. "7. As a business owner I want to be able to generate increased brand awareness so that my brand becomes synonymous with open fire cooking"**
+
+Acceptance criteria:
+- The branding of the company should be clear throughout the website
+- This information should be available on all device sizes.
+
+Evidence/Observations:
+- The website has the Campfire cooking branding, colours and logo throughout
+
+Outcome: Test successful
+
+---
+
+**8. "8. As a site administrator I want to be able to maintain the user recipe section so I can maintain the quality of the recipes submitted"**
+
+Acceptance criteria:
+- The administratorshould be able to edit and remove recipes if required
+- This information should be available on all device sizes.
+
+Evidence/Observations:
+- When using the administrator account all recipes can be edited and/or deleted
+
+![User story 8 evidence screenshot 1](Documentation/tests/RecipesAdminUser.png)
 
 Outcome: Test successful
 
@@ -193,15 +304,14 @@ The website has been designed to be responsive to different screen sizes. The fo
 
 ## Mobile
 
-- Reviews section displays reviews singly as expected
-- Footer section logo is hidden as expected
-- Gin Producer / Gin joint content is displayed singly across full screen width as expected
+- The cards on the recipes pages display singly as expected
+- Image elements on view recipe disappear as expected
+- Sidenav is deployed
 
 ## Tablet 
 
-- Imagery at top of imagery only takes half page width as expect with the sub heading text not being displayed as expected
-- Reviews are displayed 2 across as expected
-- Footer section logo is hidden as expected
+- The cards on the recipes pages display in two or three as expected (depends on size of tablet)
+- Sidenav may be deployed (depends on size/orientation of tablet)
 
 ---
 
@@ -214,9 +324,14 @@ The website has been tested on the following browsers:
 
 ---
 
-# Bugs
-The following bugs were noted during development of the Craft Gins NI website:
-- issues getting dropdown function to operate correctly initially - issue due to incorrectly formatted JQuery - resolved by amending JQuery syntax following research
-- issues getting markers to display on Google Maps initially - only single marker would display - resolved by amendeing javascript code and separating lat/lng variables within the producersinfo.js file
-- issues getting sendEmail to operate correctly - test email from within sendMail worked but not on form submission - form labels/names/id needed set correctly using information set in documentation
-- producers.js appeneded elements incorectly - elements were not being appended to correct divs - used template literals to create content and remove need for extensive appending
+# **Bugs**
+The following bugs were noted during development of the Campfire Cooking website:
+- Delete functionality worked correctly prior to using a modal to confirm the deletion. Once the modal was coded recipes were deleted but it was not the selected recipe but the first recipe from that user. Solution: as the generation of the modal was part of the for loop the modal needed to be created with a unique id to allow deletion of correct recipe.
+- Social media icons were not available on Materialize. Solution: found some custom code which used Font Awesome icons but styled them in similar fashion to the Materialize site
+- Viewing recipes on mobile site made the 4x1 grid to become unreadable. Solution: set media query to operate at lower screen sizes which amends grid to 2x2 and assigned elements to specific positions on the grid to ensure labels and values sit correctly
+
+---
+
+# **Validation**
+
+All HTML/CSS/Python pages have been checked against the linters running in GitPod and no problems or errors exist.
