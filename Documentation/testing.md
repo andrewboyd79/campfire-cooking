@@ -191,7 +191,7 @@ Acceptance criteria:
 Evidence/Observations:
 - The recipes.html page contains recipes suitable for cooking on an open fire 
 
-![User story 1 evidence screenshot 1](Documentation/tests/RecipesNoEdit.png)
+![User story 1 evidence screenshot 1](tests/RecipesNoEdit.png)
 
 Outcome: Test successful
 
@@ -206,7 +206,7 @@ Acceptance criteria:
 Evidence/Observations:
 - Users can upload recipes through the add recipes function
 
-![User story 2 evidence screenshot 1](Documentation/tests/AddRecipe.png)
+![User story 2 evidence screenshot 1](tests/AddRecipe.png)
 
 Outcome: Test successful
 
@@ -221,7 +221,7 @@ Acceptance criteria:
 Evidence/Observations:
 - Users can edit their recipes through the edit recipes function
 
-![User story 3 evidence screenshot 1](Documentation/tests/EditRecipe.png)
+![User story 3 evidence screenshot 1](tests/EditRecipe.png)
 
 Outcome: Test successful
 
@@ -236,7 +236,7 @@ Acceptance criteria:
 Evidence/Observations:
 - Users can delete their recipes from the recipes page
 
-![User story 4 evidence screenshot 1](Documentation/tests/DeleteRecipe.png)
+![User story 4 evidence screenshot 1](tests/DeleteRecipe.png)
 
 Outcome: Test successful
 
@@ -264,7 +264,7 @@ Acceptance criteria:
 Evidence/Observations:
 - The website gives method steps for each recipe
 
-![User story 6 evidence screenshot 1](Documentation/tests/Search.png)
+![User story 6 evidence screenshot 1](tests/Search.png)
 
 Outcome: Test successful
 
@@ -292,7 +292,7 @@ Acceptance criteria:
 Evidence/Observations:
 - When using the administrator account all recipes can be edited and/or deleted
 
-![User story 8 evidence screenshot 1](Documentation/tests/RecipesAdminUser.png)
+![User story 8 evidence screenshot 1](tests/RecipesAdminUser.png)
 
 Outcome: Test successful
 
