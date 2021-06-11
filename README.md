@@ -1,16 +1,25 @@
 # **Campfire Cooking Website** 
 ![Logo](static/images/campfire-cooking-logo.png)
 
-[View website](https://andrewboyd79-campfire-cooking.herokuapp.com/recipes)
+[View Campfire cooking website](https://andrewboyd79-campfire-cooking.herokuapp.com/recipes)
+
+[View GitHub repository for campfire-cooking](https://github.com/andrewboyd79/campfire-cooking)
 
 This Campfire Cooking website has been produced by Andrew Boyd as a Milestone 3 Project for the Code Institute’s Full Stack Web Development course.
 
-After over a year of restrictions on travel and exploration, due to Covid-19, many people are seeking a chance to get back out in to the great outdoors for activity and recreation. For many, nights will be spent sitting, relaxing, swapping stories round a campfire with some food and drinks. Others will be happy to stay at home and enjoy time with family, friends and neighbours sharing a bite to eat and drink around a firepit or open BBQ.
+---
 
-The Campfire Cooking website aims to enable those individuals to find and share recipes, from around the world, that can be used to create dishes on an open fire. 
-Users will get a list of ingredients needed, along with a method to follow; the site aims to give users an indication of how long it will take to prepare and cook the dishes and suggest how difficult the recipe is. 
-Similar dishes will be grouped together to allow users to create meals and search functionality aims to help them find recipes quickly. 
-As the website relies on contributions from its users it aims to make the process of adding, editing and removing recipes simple and intuitive, but also give the site administrators suitable functionality to maintain and develop the site over time.
+## About
+
+After over a year of restrictions on travel and exploration, due to Covid-19, many people are seeking a chance to get back out in to the great outdoors for activity and recreation. 
+
+For many, nights will be spent sitting, relaxing, swapping stories round a campfire with some food and drinks. Others will be happy to stay at home and enjoy time with family, friends and neighbours sharing a bite to eat and drink around a firepit or open BBQ.
+
+The Campfire Cooking website aims to enable those individuals to find and share recipes, from around the world, that can be used to create dishes/meals over an open fire.
+
+Users will get a list of ingredients needed, along with a method to follow; the site aims to give users an indication of how long it will take to prepare and cook the dishes and suggest how difficult the recipe is. Search functionality aims to help them find recipes quickly.
+
+As the website relies solely on user contributions it aims to make the process of adding, editing and removing recipes simple and intuitive; however the site also give the administrators functionality to maintain and develop the site over time.
 
 ---
 
@@ -67,14 +76,14 @@ User Experience, and associated UX design, is concerned with how a user interact
 The business expects this website to:
 - Provide recipes suitable for campfire cooking
 - Inspire and generate an interest in cooking on an open fire
-- Increase brand awareness and widen its target audience. Imagery, colours, fonts and logo which are associated with the Campfire Cooking brand will be used throughout the site.
-- Showcase Campfire Cooking products and direct users toward those products e.g. campfire cooking pots/utensils
+- Increase brand awareness and widen its target audience
+- Showcase the experiences Campfire Cooking offers
 - Connect fans with the Canpfire Cooking social media channels
 
 ## Target audience
 The target audience of this website is:
 - Individuals who regularly enjoy the outdoors/wilderness
-- Campers/glampers
+- Campers / glampers
 - Families looking for a new way to cook
     
 Users will be expecting information presentation to be:
@@ -96,7 +105,6 @@ Users of this website expect to be able to:
 - Add and edit their own recipes to the Campfire Cooking site
 - Rely on Campfire Cooking recipes to create simple/tasty food
 - Find out tips/techniques on how to cook on a campfire from other users/outdoor experts
-- Find useful products for campfire cooking
 
 
 ## User Stories
@@ -114,13 +122,9 @@ The following user stories have been developed to outline some of the benefits t
 
 6. As a user I want to be able to search for recipes so I can quickly find the information I'm looking for
 
-7. As a business owner I want to be able to inform individuals about my products and services so that I can sell Montserrat
+7. As a business owner I want to be able to generate increased brand awareness so that my brand becomes synonymous with open fire cooking
 
-8. As a business owner I want to be able to generate increased brand awareness so that my brand becomes synonymous with open fire cooking
-
-9. As a site administrator I want to be able to maintain the user recipe ssection so I can maintain the quality of the recipes submitted
-
-10. As a site administrator I want to get information on which recipes and products are popular so I can create future content which appeals to the user
+8. As a site administrator I want to be able to maintain the user recipe section so I can maintain the quality of the recipes submitted
 
 
 ## User considerations
@@ -131,25 +135,21 @@ Consideration has been given to the following when developing a website which me
 
 ## Wireframe diagrams
 
-### Home Page
+### Recipes Pages
 
- - [Mobile view](LINK TO MOBILE VIEW)
- - [Tablet view](LINK TO TABLET VIEW)
- - [Desktop view](LINK TO DESKTOP VIEW) 
+ - [Mobile view](Documentation/wireframes/Mobile-RecipesPages.png)
+ - [Tablet view](Documentation/wireframes/Tablet-RecipesPages.png)
+ - [Desktop view](Documentation/wireframes/Desktop-RecipePages.png) 
 
-### About Page
+### Login Pages
 
- - [Mobile view](LINK TO MOBILE VIEW)
- - [Tablet view](LINK TO TABLET VIEW)
- - [Desktop view](LINK TO DESKTOP VIEW)
-
-### Collections Page
-
- - [Mobile view](LINK TO MOBILE VIEW)
- - [Tablet view](LINK TO TABLET VIEW)
- - [Desktop view](LINK TO DESKTOP VIEW) 
+ - [Mobile view](Documentation/wireframes/Mobile-LoginPages.png)
+ - [Tablet view](Documentation/wireframes/Tablet-LoginPages.png)
+ - [Desktop view](Documentation/wireframes/Desktop-LoginPages.png)
 
 ## Design Considerations
+
+Imagery, colours, fonts and logo which are associated with the Campfire Cooking brand will be used throughout the site.
 
 ### Colours
 ![Colours](static/images/Colour-palette.svg) 
@@ -260,7 +260,10 @@ The following features will be added to the website in future releases:
 - Collections of recipes which bring together new recipes/seasonal recipes/recipes featuring a specific meat/ingredient
 - Product pages and links to specific products named within recipes i.e. dutch oven would link to the dutch oven product page
 - Separate fields within the ingredients section for numbers, units, ingredients e.g. 1 tbsp salt would be recorded as 3x seaparate values. This would allow for cleaner data entry and better user experience with more dropdowns etc.
+- Use of categories (to be used in conjunction with collections) to allow the user to link to most relevant content/recipes
 - Increased administrator functionality - ability for site administrator to add/delete values from categories/collections/menus
+- Ability to upload images directly to sire instead of image URL'safe
+- Incorporation of video recipes
 
 ---
 
@@ -298,7 +301,7 @@ The following Entity Relationship diagram has been produced to show the relation
 - [Materialize (1.0.0)](https://materializecss.com/) was used to aid with responsive design and increation of some of the project elements
 - [jQuery (3.5)](https://api.jquery.com/) was used to aid in the writing of the JavaScript elements
 - [Adobe Fonts](https://fonts.adobe.com/) was used to provide the Brandon Grotesque font 
-- [GitHub](https://github.com/andrewboyd79/CraftGinsNI) was used to hold the P-L-Services repository 
+- [GitHub](https://github.com/andrewboyd79/campfire-Cooking) was used to hold the campfire cooking repository 
 - [GitPod](https://gitpod.io/workspaces/) was used as the dev environment for the project
 - [MongoDB](https://www.mongodb.com/cloud/atlas1) was used to host the database for the project
 - [Heroku](https://www.heroku.com/) was used for deployment of the project
@@ -313,24 +316,102 @@ A separate [testing.md](documentation/testing.md) file has been created to recor
 
 # **Deployment**
 
-INSERT STEPS ON HOW TO DEPLOY TO GITHUB PAGES OR HEROKU 
+## Cloning the GitHub repository
+
+It may be necessary to clone the repository from GitHub to your local computer.  Cloning the repository makes a copy of all the of repository data and takes it from GitHub to your local machine.  The following steps, detailed below, should be taken to clone a repository:
+
+1. Navigate to the main page of the repository (in this case https://github.com/andrewboyd79/campfire-cooking)
+
+2. Select the green button labelled Code
+
+3. To clone the repo using HTTPS select the "HTTPS" option; to clone using an SSH key select the second opttion "SSH"; to clone using GitHub CLI select the third "GitHub CLI" option. Use the clipboard icon to copy the relevant information.
+
+4. Open Git Bash and change the working directory to the location where you wish the cloned repo to be stored.
+
+5. Use the git clone command and paste in the information copied in step 3 and Press Enter to create a local clone
+
+6. If you wish to clone the repo to GitHub Desktop repeat steps 1 & 2 and from there select the "Open with GitHub Desktop" option
+
+7. Follow the on screen prompts from within GitHub Desktop (this option required GitHub Desktop to be installed to be successful!)
+
+Support information, for this process, can be found on the [GitHub Pages section](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) of the GitHub Docs 
 
 ---
+
+## Deployment to Heroku
+
+To deploy the Campfire Cooking webiste to Heroku the following steps were taken:
+
+1. Create a Procfile by using the command ````echo web: python app.py > Procfile```` at the terminal prompts. Any extra lines need to be removed from the end of the Procfile
+2. Create a requirements.txt file using the command ````pip3 freeze —local > requirements.txt````
+3. Log in to the Heroku account
+4. Click the create new app button. Provide a name for the app (must be unique within Heroku) and choose the closest region to your location (namely Europe)
+5. Set up deployment from GitHub repository ( Deploy > Deployment method > GitHub) - at this stage automatic deployment from GitHub repository should not be selected
+6. Choose the appropriate GitHub repository (campfireCooking) from the options
+7. Select the Reveal Config Vars option and set the config vars as follows:
+
+| Key                           | Value                        |
+|-------------------------------|------------------------------|
+| Set Secret Key                | < secret key value >         |
+| MONGO_DBNAME                  | "campfireCooking"            |
+| MONGO_URI                     | "mongodb+srv://< user >:< password >@myfirstcluster.hg9mx.mongodb.net/campfireCooking?retryWrites=true&w=majority"
+| IP                            | "0.0.0.0"                    |
+| Port                          | "5000"                       |
+
 
 # **Credits**
 
 ## Images
 The following images have been used for this project:
 
-- [INSERT LOCATION OF IMAGE ON SITE](INSERT WEB ADDRESS FOR IMAGE) - Image by INSERT CONTRIBUTOR NAME from WEBSITE NAME
+- [Recipe Image](https://images.unsplash.com/photo-1601284702796-a27ffd3eff3c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1266&q=80) - Image from Robert Krčmar
+
+- [Recipe Image](https://images.unsplash.com/photo-1602065538249-7f958ef7b356?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80) - Image from Gil Ndjouwou
+
+- [Recipe Image](https://images.unsplash.com/photo-1576020956260-490f5c5fc892?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80) - Image from Brooke Lark
+
+- [Recipe Image](https://images.unsplash.com/photo-1566765969673-f9afb63c1fa1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Y2FtcGZpcmUlMjBjb29raW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60) - Image from Nick Artman
+
+- [Recipe Image](https://images.unsplash.com/photo-1464867037750-e4ebec103b42?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80) - Image from Alexey Ruban
+
+- [Recipe Image](https://images.unsplash.com/photo-1614961909013-1e2212a2ca87?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80) - Image from Micheile Henderson
+
+- [Recipe Image](https://images.unsplash.com/photo-1596097558091-548313ceb129?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80) - Image from Louis Hansel
+
+- [Recipe Image](https://images.unsplash.com/photo-1464879972554-2a22f0ef1c1f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80) - Image from Autumn Mott Rodehaver
+
+- [Recipe Image](https://images.unsplash.com/photo-1608474280544-81b631576c57?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1214&q=80) - Image from Alejandro Vasquez
+
+- [Recipe Image](https://images.unsplash.com/photo-1536793896870-7f12343537c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80) - Image from Justin Leniger
+
+- [Recipe Image](https://images.unsplash.com/photo-1550789813-472d2a9cd237?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1301&q=80) - Image from Ken Ohyama
+
+- [Hero Image](https://images.unsplash.com/photo-1466220549276-aef9ce186540?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80) - Image from Myles Tan
+
+- [View Recipes Image](https://images.unsplash.com/photo-1475483768296-6163e08872a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80) - Image from Mike Erskinie
 
 
 
 ## Content
-- INSERT SOURCES OF ADDITIONAL CONTENT
+Example recipes have been taken from the following websites:
+
+ - [Taste of Home](https://www.tasteofhome.com/collection/favorite-camping-recipes/#:~:text=40%20Easy%20Camping%20Recipes%20Ready%20for%20the%20Campfire,Cheese%20Hash%20Brown%20Packets.%20...%20More%20items...%20)
+
+ - [BBC Good Food](https://www.bbcgoodfood.com/recipes/collection/campfire-recipes)
+
+ - [Recipezazz](https://www.recipezazz.com/recipe/foil-wrapped-corn-on-cob-in-oven-bbq-or-open-fire-9603)
+
+ - [Sorted Food](https://sortedfood.com/recipe/alemussels)
+
 
 ## Code
-- INSERT SOURCES OF ADDITIONAL CODE
+Code from the following sources has been taken and amended for use in this website:
+- [Setting patterns on registration page](https://www.w3schools.com/TAGS/att_input_pattern.asp) - taken from w3schools
+
+- [Materialize Social Media Icons](https://terrymooreii.github.io/materialize-social/) - taken from Terri Moore
+
+- [Prevent form submission on enter key](https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter) - taken from stackoverflow
+
 
 ## Acknowledgements
 - Thanks to my mentor (Aaron Sinnott) for his guidance and help during this project

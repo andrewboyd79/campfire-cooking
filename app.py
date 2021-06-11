@@ -20,18 +20,21 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/recipes")
 def recipes():
+    """ Finds and returns all recipes in database. """
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/my_recipes")
 def my_recipes():
+    """ Finds and returns recipes all recipes added by the session user. """
     user_recipes = list(mongo.db.recipes.find({"added_by": session["user"]}))
     return render_template("my_recipes.html", user_recipes=user_recipes)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """ Retrieves search term and finds matching recipes in database. """
     query = request.form.get("query")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     return render_template("recipes.html", recipes=recipes)
@@ -39,12 +42,17 @@ def search():
 
 @app.route("/view_recipe/<recipe_id>")
 def view_recipe(recipe_id):
+    """ Finds and returns recipe information for selected recipe. """
     selected_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("view_recipe.html", selected_recipe=selected_recipe)
 
 
 @app.route("/add_recipes", methods=["GET", "POST"])
 def add_recipes():
+    """
+    Gets information from database tables on time units and difficulty.
+    Retrieves user input information from form and adds it to database.
+    """
     difficulty = list(mongo.db.difficulty.find())
     time_unit = list(mongo.db.time_units.find())
     if request.method == "POST":
@@ -75,6 +83,7 @@ def add_recipes():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    """Updates database with information from user inputs on form."""
     if request.method == "POST":
         submit = {
             "recipe_name": request.form.get("recipe_name"),
@@ -99,9 +108,11 @@ def edit_recipe(recipe_id):
     difficulty = list(mongo.db.difficulty.find())
     time_unit = list(mongo.db.time_units.find())
     # page to render only for session user or admin
-    if session["user"] == recipe["added_by"] or session["user"] == "admin_account":
+    if session["user"] == recipe["added_by"] \
+            or session["user"] == "admin_account":
         return render_template(
-            "edit_recipe.html", recipe=recipe, difficulty=difficulty, time_unit=time_unit)
+            "edit_recipe.html", recipe=recipe,
+            difficulty=difficulty, time_unit=time_unit)
     else:
         flash("User does not have access to edit this recipe")
         return redirect(url_for("recipes"))
@@ -109,9 +120,11 @@ def edit_recipe(recipe_id):
 
 @app.route("/delete_recipe/<deletion_id>")
 def delete_recipe(deletion_id):
+    """ Deletes a selected recipe from database. """
     deleted_item = mongo.db.recipes.find_one({"_id": ObjectId(deletion_id)})
     # page to render only for session user or admin
-    if session["user"] == deleted_item["added_by"] or session["user"] == "admin_account":
+    if session["user"] == deleted_item["added_by"] \
+            or session["user"] == "admin_account":
         mongo.db.recipes.delete_one(deleted_item)
         flash("Recipe successfully removed")
         return redirect(url_for("recipes"))
@@ -122,6 +135,10 @@ def delete_recipe(deletion_id):
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Checks the database for existing username.
+    Confirms that passwords match and hashes.
+    Inserts user information into database and puts user into session. """
     if request.method == "POST":
         # check for existing username using .findone method
         existing_user = mongo.db.users.find_one(
@@ -163,6 +180,9 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """ Checks if username exists in database table.
+    Checks password hash matches and gives access.
+    """
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -194,6 +214,7 @@ def login():
 
 @app.route("/logout")
 def logout():
+    """ Removes the session user. """
     flash("Thank you for using Campfire Cooking!")
     session.pop("user")
     return redirect(url_for('login'))
@@ -201,11 +222,13 @@ def logout():
 
 @app.errorhandler(404)
 def page_not_found(e):
+    """ 404 error handling. """
     return render_template('404.html'), 404
 
 
 @app.errorhandler(500)
 def internal_server_error(e):
+    """ 500 error handling. """
     return render_template('500.html'), 500
 
 
